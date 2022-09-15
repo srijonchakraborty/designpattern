@@ -1,2 +1,2 @@
-# designpattern
-design pattern
+# Design Pattern Practice
+Design Pattern
