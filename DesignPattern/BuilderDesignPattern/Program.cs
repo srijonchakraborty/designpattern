@@ -41,7 +41,7 @@ namespace DesignPattern
             
             finalNotification = myNT.GetNotification();
             Console.WriteLine(finalNotification.ToString());
-            //You can console log here "finalNotification" 
+            //You can console log here "finalNotification" Test 
         }
     }
 
