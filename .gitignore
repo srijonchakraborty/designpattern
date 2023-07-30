@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DesignPattern/.vs/DesignPattern
+/DesignPattern/BuilderDesignPattern/obj
+/DesignPattern/BuilderPattern/bin/Debug/net7.0
+/DesignPattern/BuilderPattern/obj
+/DesignPattern/Common/bin/Debug/net7.0
+/DesignPattern/Common/obj

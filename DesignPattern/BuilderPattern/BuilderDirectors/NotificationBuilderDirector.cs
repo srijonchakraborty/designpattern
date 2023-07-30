@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Common;
 
-namespace BuilderDesignPattern
+
+namespace BuilderPattern
 {
-    class NotificationBuilderDirector
+    public class NotificationBuilderDirector
     {
         readonly Notification NoUseObj = new Notification();
         public void BuildNotification(INotificationBuilder notificationBuilder, Dictionary<string, dynamic> collection)

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Common;
 
-namespace BuilderDesignPattern
+
+namespace BuilderPattern
 {
-    class EmailNotificationBuilder : INotificationBuilder
+    public class EmailNotificationBuilder : INotificationBuilder
     {
         Notification currentNofication = new Notification();
         public INotificationBuilder AddEmails(string[] emails)

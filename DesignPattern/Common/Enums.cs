@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuilderDesignPattern
+namespace Common
 {
-    enum NotificationType
+    public enum NotificationType
     {
         None = 0,
         Email = 1,
