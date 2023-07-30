@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BuilderPattern;
+using Common;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
-namespace BuilderDesignPattern
+namespace DesignPattern
 {
     class Program
     {
@@ -23,6 +25,7 @@ namespace BuilderDesignPattern
             notificationDirector.BuildNotification(myNT, notificationInfo);
 
             Notification finalNotification = myNT.GetNotification();
+            Console.WriteLine(finalNotification.ToString());
 
             //You can console log here "finalNotification"
 
@@ -37,7 +40,7 @@ namespace BuilderDesignPattern
             notificationDirector.BuildNotification(myNT, notificationInfo);
             
             finalNotification = myNT.GetNotification();
-
+            Console.WriteLine(finalNotification.ToString());
             //You can console log here "finalNotification"
         }
     }

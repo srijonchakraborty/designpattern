@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Common;
 
-namespace BuilderDesignPattern
+namespace BuilderPattern
 {
-    interface INotificationBuilder
+    public interface INotificationBuilder
     {
         INotificationBuilder AddEmails(string[] emails);
         INotificationBuilder AddCCEmails(string[] emailCCs);

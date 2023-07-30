@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuilderDesignPattern
+namespace Common
 {
-    class Notification
+    public class Notification
     {
         public string[] Emails { get; set; }
         public string[] CCEmails { get; set; }
