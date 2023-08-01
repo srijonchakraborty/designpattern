@@ -1,7 +1,7 @@
 ﻿using Common;
 
 
-namespace BuilderPattern
+namespace BuilderPattern.BuilderConcrete.NotificationBuilder
 {
     public class EmailNotificationBuilder : INotificationBuilder
     {

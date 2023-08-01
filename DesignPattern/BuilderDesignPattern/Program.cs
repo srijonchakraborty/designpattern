@@ -1,4 +1,5 @@
 ﻿using BuilderPattern;
+using BuilderPattern.BuilderConcrete.NotificationBuilder;
 using Common;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+            OrderDataCreator.CreateData();
             Console.WriteLine("Hello World!");
             Notification noUseObj = new Notification();
             INotificationBuilder myNT = new EmailNotificationBuilder();
