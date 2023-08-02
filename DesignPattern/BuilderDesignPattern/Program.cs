@@ -1,9 +1,12 @@
 ﻿using BuilderPattern;
 using BuilderPattern.BuilderConcrete.NotificationBuilder;
 using Common;
+using Common.Model.Order;
+using DesignPattern.Order;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace DesignPattern
 {
@@ -11,7 +14,23 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
-            OrderDataCreator.CreateData();
+           var items= OrderDataCreator.CreateData();
+            var v = items.Where(c => c is PurchaseOrder).ToList();
+            foreach (var itm in items)
+            {
+                if(itm is PurchaseOrder)
+                {
+                    Console.WriteLine("PO Item");
+                }
+                else if (itm is SpotPurchase)
+                {
+                    Console.WriteLine("SPO Item");
+                }
+                else if (itm is LC)
+                {
+                    Console.WriteLine("LC Item");
+                }
+            }
             Console.WriteLine("Hello World!");
             Notification noUseObj = new Notification();
             INotificationBuilder myNT = new EmailNotificationBuilder();
