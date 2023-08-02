@@ -14,7 +14,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
-           var items= OrderDataCreator.CreateData();
+            var items= OrderDataCreator.CreateData();
             var v = items.Where(c => c is PurchaseOrder).ToList();
             foreach (var itm in items)
             {
