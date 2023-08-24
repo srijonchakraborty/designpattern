@@ -13,4 +13,19 @@ namespace Common
         SMS = 2,
         EmailAndSMS = 3
     }
+    public enum PurchaseOrderType
+    {
+        Regular=0,
+        Urgent=1
+    }
+    public enum OrderStatus
+    {
+        Draft = 0,
+        Pending = 1,
+        Approved = 2,
+        Received = 3,
+        Rejected = 4,
+        Cancelled = 5,
+        Return = 5,
+    }
 }
