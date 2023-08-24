@@ -9,7 +9,7 @@ namespace Common.Model.Order
         public string Id { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public string OrderNo { get; set; }
-        public List<IOrderItem> Orders { get; set; }
+        public List<IOrderItem> OrderItems { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime ModifiedDate { get; set; }
     }
