@@ -23,6 +23,7 @@ namespace Common.Contracts.Order
         string ItemId { get; set; }
         string ItemName { get; set; }
         double Quantity { get; set; }
+        double Price { get; set; }
         double ReceivedQuantity { get; set; }
         double RejectedQuantity { get; set; }
         string Unit { get; set; }

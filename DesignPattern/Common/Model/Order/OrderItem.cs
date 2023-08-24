@@ -14,6 +14,7 @@ namespace Common.Model.Order
         public string ItemId { get; set; }
         public string ItemName { get; set; }
         public double Quantity { get; set; }
+        public double Price { get; set; }
         public double ReceivedQuantity { get; set; }
         public double RejectedQuantity { get; set; }
         public string Unit { get; set; }

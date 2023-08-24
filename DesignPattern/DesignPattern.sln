@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelFileService", "ExcelFi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPattern", "DesignPattern\DesignPattern.csproj", "{03DB9C92-7210-4216-82D1-6306265CD2DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorPattern", "DecoratorPattern\DecoratorPattern.csproj", "{1B822F8C-1F95-4436-8CD0-CA4E820C54DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{03DB9C92-7210-4216-82D1-6306265CD2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03DB9C92-7210-4216-82D1-6306265CD2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03DB9C92-7210-4216-82D1-6306265CD2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B822F8C-1F95-4436-8CD0-CA4E820C54DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B822F8C-1F95-4436-8CD0-CA4E820C54DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B822F8C-1F95-4436-8CD0-CA4E820C54DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B822F8C-1F95-4436-8CD0-CA4E820C54DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
