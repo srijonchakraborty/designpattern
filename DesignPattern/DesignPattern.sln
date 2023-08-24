@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPattern", "BuilderDesignPattern\DesignPattern.csproj", "{0AC7793E-5ED0-43FB-ACEC-5150300F6115}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{652BFE2E-D0AF-44C2-828E-238771F30098}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderPattern", "BuilderPattern\BuilderPattern.csproj", "{6C5C99B5-2ABD-45FA-9DCF-1F4386344ECC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{A9D299B2-102F-42FE-BEEA-0A08C4A20B59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelFileService", "ExcelFileService\ExcelFileService.csproj", "{4A7AC673-711F-4717-A00D-E9000C83948E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelFileService", "ExcelFileService\ExcelFileService.csproj", "{4A7AC673-711F-4717-A00D-E9000C83948E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPattern", "DesignPattern\DesignPattern.csproj", "{03DB9C92-7210-4216-82D1-6306265CD2DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0AC7793E-5ED0-43FB-ACEC-5150300F6115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0AC7793E-5ED0-43FB-ACEC-5150300F6115}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0AC7793E-5ED0-43FB-ACEC-5150300F6115}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0AC7793E-5ED0-43FB-ACEC-5150300F6115}.Release|Any CPU.Build.0 = Release|Any CPU
 		{652BFE2E-D0AF-44C2-828E-238771F30098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{652BFE2E-D0AF-44C2-828E-238771F30098}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{652BFE2E-D0AF-44C2-828E-238771F30098}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{4A7AC673-711F-4717-A00D-E9000C83948E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A7AC673-711F-4717-A00D-E9000C83948E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A7AC673-711F-4717-A00D-E9000C83948E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03DB9C92-7210-4216-82D1-6306265CD2DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03DB9C92-7210-4216-82D1-6306265CD2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03DB9C92-7210-4216-82D1-6306265CD2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03DB9C92-7210-4216-82D1-6306265CD2DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
