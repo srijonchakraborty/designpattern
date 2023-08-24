@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderPattern", "BuilderPattern\BuilderPattern.csproj", "{6C5C99B5-2ABD-45FA-9DCF-1F4386344ECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{A9D299B2-102F-42FE-BEEA-0A08C4A20B59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{A9D299B2-102F-42FE-BEEA-0A08C4A20B59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelFileService", "ExcelFileService\ExcelFileService.csproj", "{4A7AC673-711F-4717-A00D-E9000C83948E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A9D299B2-102F-42FE-BEEA-0A08C4A20B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9D299B2-102F-42FE-BEEA-0A08C4A20B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9D299B2-102F-42FE-BEEA-0A08C4A20B59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A7AC673-711F-4717-A00D-E9000C83948E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A7AC673-711F-4717-A00D-E9000C83948E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A7AC673-711F-4717-A00D-E9000C83948E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A7AC673-711F-4717-A00D-E9000C83948E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
