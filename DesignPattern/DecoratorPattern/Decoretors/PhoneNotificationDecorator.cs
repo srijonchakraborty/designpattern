@@ -12,7 +12,7 @@ namespace DecoratorPattern.Decoretors
     {
         public void Apply(PurchaseOrder order)
         {
-            //We will send email using Phone Notification Builder and Using Email send Service
+            //We will send email using Phone Notification Builder and Using Phone send Service
         }
     }
 }
