@@ -16,6 +16,11 @@ namespace DesignPattern
         {
             ReportStrategyPatternImplementation();
             Console.WriteLine("Hello World!");
+            BuilderPatternImplementation();
+        }
+
+        private static void BuilderPatternImplementation()
+        {
             Notification noUseObj = new Notification();
             INotificationBuilder myNT = new EmailNotificationBuilder();
             NotificationBuilderDirector notificationDirector = new NotificationBuilderDirector();
