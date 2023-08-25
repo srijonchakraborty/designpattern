@@ -11,9 +11,10 @@ namespace Common.Contracts.Order
         string Id { get; set; }
         OrderStatus OrderStatus { get; set; }
         string OrderNo { get; set; }
-        List<IOrderItem> Orders { get; set; }
+        List<IOrderItem> OrderItems { get; set; }
         DateTime CreateDate { get; set; }
         DateTime ModifiedDate { get; set; }
+        string ClientEmail { get; set; }
     }
 
     public interface IOrderItem
@@ -23,6 +24,7 @@ namespace Common.Contracts.Order
         string ItemId { get; set; }
         string ItemName { get; set; }
         double Quantity { get; set; }
+        double Price { get; set; }
         double ReceivedQuantity { get; set; }
         double RejectedQuantity { get; set; }
         string Unit { get; set; }

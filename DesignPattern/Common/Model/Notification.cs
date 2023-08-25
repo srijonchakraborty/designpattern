@@ -10,6 +10,7 @@ namespace Common
     {
         public string[] Emails { get; set; }
         public string[] CCEmails { get; set; }
+        public string[] BCCEmails { get; set; }
         public string[] PhoneNumbers { get; set; }
         public string NotificationSubject { get; set; }
         public string NotificationBody { get; set; }

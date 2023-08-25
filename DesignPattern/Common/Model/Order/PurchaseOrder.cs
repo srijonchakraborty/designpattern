@@ -9,8 +9,28 @@ namespace Common.Model.Order
         public string Id { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public string OrderNo { get; set; }
-        public List<IOrderItem> Orders { get; set; }
+        public List<IOrderItem> OrderItems { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime ModifiedDate { get; set; }
+        public string ClientEmail { get; set; }
+        public double TotalAmount 
+        { 
+            get 
+            {
+              return OrderItems?.Sum(c => c.Quantity * c.Price) ?? 0;
+            } 
+        }
+        public double ShippingFee { get; set; }
+        public double TaxAmount { get; set; }
+        public double DiscountAmount { get; set; }
+        public double LoyaltyDiscount { get; set; }
+
+        public double TotalCost 
+        {
+            get
+            {
+                return (TotalAmount+ ShippingFee+ TaxAmount)-(DiscountAmount+ LoyaltyDiscount);
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace BuilderPattern.BuilderInterface
         }
         public OrderBuilder<T> SetOrders(List<IOrderItem> orders)
         {
-            target.Orders = orders;
+            target.OrderItems = orders;
             return this;
         }
         public OrderBuilder<T> SetCreateDate(DateTime createDate)
@@ -40,21 +40,28 @@ namespace BuilderPattern.BuilderInterface
             target.ModifiedDate = modifiedDate;
             return this;
         }
-        public OrderBuilder<T> AddOrderItem(IOrderItem item)
+        public OrderBuilder<T> SetClientEmail(string clientEmail)
         {
-            if (target.Orders == null)
-            {
-                target.Orders = new List<IOrderItem>();
-            }
-
-            target.Orders.Add(item);
+            target.ClientEmail = clientEmail;
             return this;
         }
+        public OrderBuilder<T> AddOrderItem(IOrderItem item)
+        {
+            if (target.OrderItems == null)
+            {
+                target.OrderItems = new List<IOrderItem>();
+            }
+
+            target.OrderItems.Add(item);
+            return this;
+        }
+
+
         public OrderBuilder<T> UpdateOrderItem(string itemId, Action<IOrderItem> updateAction)
         {
-            if (target.Orders != null)
+            if (target.OrderItems != null)
             {
-                var itemToUpdate = target.Orders.FirstOrDefault(item => item.ItemId == itemId);
+                var itemToUpdate = target.OrderItems.FirstOrDefault(item => item.ItemId == itemId);
                 if (itemToUpdate != null)
                 {
                     updateAction(itemToUpdate);

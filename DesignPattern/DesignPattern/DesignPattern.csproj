@@ -12,7 +12,9 @@
   <ItemGroup>
     <ProjectReference Include="..\BuilderPattern\BuilderPattern.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
-    <ProjectReference Include="..\ExcelFileService\ExcelFileService.csproj" />
+    <ProjectReference Include="..\DecoratorPattern\DecoratorPattern.csproj" />
+    <ProjectReference Include="..\Services\EmailService\EmailService.csproj" />
+    <ProjectReference Include="..\Services\ExcelFileService\ExcelFileService.csproj" />
     <ProjectReference Include="..\StrategyPattern\StrategyPattern.csproj" />
   </ItemGroup>
 

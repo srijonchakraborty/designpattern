@@ -27,6 +27,7 @@ namespace BuilderPattern.BuilderDirectors.OrderDirector
                         .SetOrders(options.Items)
                         .SetCreateDate(options.CreateDate)
                         .SetModifiedDate(options.ModifiedDate)
+                        .SetClientEmail(options.ClientEmail)
                         .Build();
             }
             else

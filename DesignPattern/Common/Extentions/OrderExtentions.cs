@@ -14,10 +14,10 @@ namespace Common.Extentions
         {
             StringBuilder result =new StringBuilder();
             
-            if (order.Orders != null)
+            if (order.OrderItems != null)
             {
                 int count=1;
-                foreach(var item in order.Orders)
+                foreach(var item in order.OrderItems)
                 {
                     string str = $@"{count}. Item:{item.ItemName} Unit:{item.Unit} Price:{item.Quantity} Supplier:{item.SupplierName}.";
                     result.AppendLine(str);
