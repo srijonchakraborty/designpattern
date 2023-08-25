@@ -22,3 +22,5 @@
 /DesignPattern/Services/EmailService/obj
 /DesignPattern/Services/ExcelFileService/bin/Debug/net7.0
 /DesignPattern/Services/ExcelFileService/obj
+/DesignPattern/PhoneService/obj
+/DesignPattern/Services/PhoneService/obj
