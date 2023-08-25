@@ -30,7 +30,8 @@ The Strategy pattern is a behavioral pattern that defines a family of algorithms
 ### Decorator Pattern
 
 The Decorator pattern is a structural pattern that allows behavior to be added to an object, either statically or dynamically, without affecting its structure. Inside this repository, you'll discover an example of the Decorator pattern, illustrating how to wrap objects with additional behaviors and responsibilities. Using this design pattern I have implementation purchase order tax, discount , shipping fee calculation and also added responsibility to send email and mobile phone notification.
-![Uploading image.png…]()
+
+[![Uploading image.png…]()](https://pasteboard.co/6V3wOSNHbF73.png)
 
 ## Getting Started
 
