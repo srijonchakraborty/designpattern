@@ -18,3 +18,7 @@
 /DesignPattern/DesignPattern/obj
 /DesignPattern/DecoratorPattern/bin/Debug/net7.0
 /DesignPattern/DecoratorPattern/obj
+/DesignPattern/Services/EmailService/bin/Debug/net7.0
+/DesignPattern/Services/EmailService/obj
+/DesignPattern/Services/ExcelFileService/bin/Debug/net7.0
+/DesignPattern/Services/ExcelFileService/obj
