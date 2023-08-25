@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailService", "Services\Em
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelFileService", "Services\ExcelFileService\ExcelFileService.csproj", "{AEA8F23D-778F-4B2F-B6B1-FC5D138ACE2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneService", "PhoneService\PhoneService.csproj", "{944A326C-D2F6-46A8-AE65-A82C5F3546DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{AEA8F23D-778F-4B2F-B6B1-FC5D138ACE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEA8F23D-778F-4B2F-B6B1-FC5D138ACE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEA8F23D-778F-4B2F-B6B1-FC5D138ACE2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{944A326C-D2F6-46A8-AE65-A82C5F3546DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{944A326C-D2F6-46A8-AE65-A82C5F3546DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{944A326C-D2F6-46A8-AE65-A82C5F3546DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{944A326C-D2F6-46A8-AE65-A82C5F3546DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{ACDDE3BB-49C7-41B5-BA29-AB810A3A7D2F} = {3E4DAE57-6C3C-4CCA-A9A2-57712F2C3037}
 		{AEA8F23D-778F-4B2F-B6B1-FC5D138ACE2D} = {3E4DAE57-6C3C-4CCA-A9A2-57712F2C3037}
+		{944A326C-D2F6-46A8-AE65-A82C5F3546DE} = {3E4DAE57-6C3C-4CCA-A9A2-57712F2C3037}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A659FE18-CF3B-4A54-A0A2-D9BDD3C6BD67}
