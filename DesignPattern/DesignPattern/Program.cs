@@ -1,8 +1,14 @@
 ﻿using BuilderPattern;
 using BuilderPattern.BuilderConcrete.NotificationBuilder;
 using Common;
+using Common.DTOs.Email;
 using Common.Model.Order;
+using DecoratorPattern.Contracts;
+using DecoratorPattern.DecoratorProcessor;
+using DecoratorPattern.Decoretors.PurchaseOrderDecoretor;
 using DesignPattern.Order;
+using EmailService.Contracts;
+using EmailService.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -16,21 +22,25 @@ namespace DesignPattern
         {
             ReportStrategyPatternImplementation();
             Console.WriteLine("Hello World!");
-            BuilderPatternImplementation();
+            Notification finalNotification = BuilderPatternImplementation();
+            DecoratorImplementation.DecoratorPatternImplementation();
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.ReadLine();
         }
 
-        private static void BuilderPatternImplementation()
+        private static Notification BuilderPatternImplementation()
         {
             Notification noUseObj = new Notification();
             INotificationBuilder myNT = new EmailNotificationBuilder();
             NotificationBuilderDirector notificationDirector = new NotificationBuilderDirector();
 
             Dictionary<string, dynamic> notificationInfo = new Dictionary<string, dynamic>();
-            notificationInfo.Add(nameof(noUseObj.CCEmails), new string[2] { "srijoncc@gmail.com", "srijoncc@live.com" });
-            notificationInfo.Add(nameof(noUseObj.Emails), new string[2] { "srijon@gmail.com", "srijon@live.com" });
+            notificationInfo.Add(nameof(noUseObj.CCEmails), new string[] { "srijoncc@yopmail.com", "srijoncc@yopmail.com" });
+            notificationInfo.Add(nameof(noUseObj.Emails), new string[] { "srijon@yopmail.com" });
             notificationInfo.Add(nameof(noUseObj.NotificationSubject), "This is a Test Subject");
             //Here you can use template with dynamic feature for body
-            notificationInfo.Add(nameof(noUseObj.NotificationBody), "This is a Notification body");
+            notificationInfo.Add(nameof(noUseObj.NotificationBody), $@"This is a Notification body ID:{Guid.NewGuid().ToString()} {DateTime.UtcNow.ToLongTimeString()}");
 
             notificationDirector.BuildNotification(myNT, notificationInfo);
 
@@ -49,9 +59,11 @@ namespace DesignPattern
 
             notificationDirector.BuildNotification(myNT, notificationInfo);
 
-            finalNotification = myNT.GetNotification();
-            Console.WriteLine(finalNotification.ToString());
+            Notification finalMobileNotification  = myNT.GetNotification();
+            Console.WriteLine(finalMobileNotification.ToString());
             //You can console log here "finalNotification" Test 
+
+            return finalNotification;
         }
 
         private static void ReportStrategyPatternImplementation()

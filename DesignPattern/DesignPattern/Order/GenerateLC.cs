@@ -44,6 +44,7 @@ namespace DesignPattern.Order
                     Items = new List<IOrderItem>(),
                     CreateDate = DateTime.Now,
                     ModifiedDate = DateTime.Now,
+                    ClientEmail="srijon@yopmail.com",
                     BankName = "Common Wealth"+ orderNum,
                     BankEmail = $"info{orderNum}@commonwealth.au"
                 };
@@ -56,10 +57,10 @@ namespace DesignPattern.Order
                         Id = orderId,
                         ItemName = "LCABCItem" + itemNum,
                         Quantity = random.Next(5, 20),
-                       
+                        Price = random.Next(21, 30),
                         Unit = "pcs",
                         SupplierName = "LCSupplier" + itemNum,
-                        SupplierEmail = "lcsupplier" + itemNum + "@example.com"
+                        SupplierEmail = "lcsupplier" + itemNum + "@yopmail.com"
                        
                     };
                     item.ReceivedQuantity = orderNum == 3 ? (int)(item.Quantity / 2) : item.Quantity;

@@ -44,7 +44,8 @@ namespace DesignPattern.Order
                     Items = new List<IOrderItem>(),
                     CreateDate = DateTime.Now,
                     ModifiedDate = DateTime.Now,
-                    InvoiceCashMemoNo="INV-"+ orderNum,
+                    ClientEmail = "srijon@yopmail.com",
+                    InvoiceCashMemoNo ="INV-"+ orderNum,
                     InvoiceDate= DateTime.Now.AddDays(orderNum*-1),
                 };
                 SpotPurchaseBuildOption.Items = new List<IOrderItem>();
@@ -56,11 +57,11 @@ namespace DesignPattern.Order
                         Id = orderId,
                         ItemName = "SPOABCItem" + itemNum,
                         Quantity = random.Next(5, 20),
-                       
+                        Price = random.Next(21, 30),
                         Unit = "pcs",
                         SupplierName = "SPOSupplier" + itemNum,
-                        SupplierEmail = "sposupplier" + itemNum + "@example.com"
-                       
+                        SupplierEmail = "sposupplier" + itemNum + "@yopmail.com"
+
                     };
                     item.ReceivedQuantity = orderNum == 3 ? (int)(item.Quantity / 2) : item.Quantity;
                     item.RejectedQuantity = item.Quantity - item.ReceivedQuantity;

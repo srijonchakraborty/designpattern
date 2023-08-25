@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DecoratorPattern.Decoretors
+namespace DecoratorPattern.Decoretors.PurchaseOrderDecoretor
 {
     public class ExpeditedShippingDecorator : IPurchaseOrderDecorator
     {
@@ -16,7 +16,7 @@ namespace DecoratorPattern.Decoretors
             //It is also possible that shipmming fee might have complex logic for each item depending on order => order.OrderItems.FirstOrDefault(x=>x.SupplierName)
             //So, we can calculate complex shipping fee here
             double ShippingFee = 20.0;
-            order.ShippingFee= ShippingFee;
+            order.ShippingFee = ShippingFee;
         }
     }
 }

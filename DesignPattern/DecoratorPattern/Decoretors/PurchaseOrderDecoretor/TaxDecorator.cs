@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DecoratorPattern.Decoretors
+namespace DecoratorPattern.Decoretors.PurchaseOrderDecoretor
 {
-    
+
     public class TaxDecorator : IPurchaseOrderDecorator
     {
         private readonly double _taxRate;

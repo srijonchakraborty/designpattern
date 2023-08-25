@@ -15,5 +15,6 @@ namespace Common.DTOs.BuilderOption.Order
         public List<IOrderItem> Items { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime ModifiedDate { get; set; }
+        public string ClientEmail { get; set; }
     }
 }

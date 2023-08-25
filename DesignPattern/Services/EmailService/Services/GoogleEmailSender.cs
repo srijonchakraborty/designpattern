@@ -1,13 +1,8 @@
 ﻿using Common;
+using System.Net;
+using System.Net.Mail;
 using Common.DTOs.Email;
 using EmailService.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmailService.Services
 {
@@ -38,9 +33,10 @@ namespace EmailService.Services
 
         private static SmtpClient PrepareSmtpClient(EmailConfigDto emailConfigDto)
         {
+            //You Need update/enable gmail feature
             return new SmtpClient("smtp.gmail.com")
             {
-                Port = int.Parse(emailConfigDto.Port),
+                Port = emailConfigDto.Port,
                 Credentials = new NetworkCredential(emailConfigDto.FromEmail, emailConfigDto.Password),
                 EnableSsl = emailConfigDto.EnableSsl,
             };
@@ -48,7 +44,7 @@ namespace EmailService.Services
 
         private void AddAttachments(Notification notification, MailMessage mailMessage)
         {
-            if (notification.AttachmentPaths.Length > 0)
+            if (notification.AttachmentPaths!=null)
             {
                 foreach (var attachmentPath in notification.AttachmentPaths)
                 {
@@ -58,7 +54,7 @@ namespace EmailService.Services
         }
         private void AddToBccEmails(Notification notification, MailMessage mailMessage)
         {
-            if (notification.BCCEmails.Length > 0)
+            if (notification.BCCEmails!=null)
             {
                 foreach (var email in notification.BCCEmails)
                 {
@@ -68,7 +64,7 @@ namespace EmailService.Services
         }
         private void AddToCcEmails(Notification notification, MailMessage mailMessage)
         {
-            if (notification.CCEmails.Length > 0)
+            if (notification.CCEmails!=null)
             {
                 foreach (var email in notification.CCEmails)
                 {
@@ -78,7 +74,7 @@ namespace EmailService.Services
         }
         private void AddToEmails(Notification notification, MailMessage mailMessage)
         {
-            if (notification.Emails.Length > 0)
+            if (notification.Emails!=null)
             {
                 foreach (var email in notification.Emails)
                 {

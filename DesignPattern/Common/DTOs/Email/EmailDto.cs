@@ -11,7 +11,7 @@ namespace Common.DTOs.Email
        public string FromEmail { get; set; }
        public string Password { get; set; }
        public string SmtpClientUrl { get; set; }
-       public string Port { get; set; }
+       public int Port { get; set; }
         public bool EnableSsl { get; set; }
         public bool IsBodyHtml { get; set; }
     }

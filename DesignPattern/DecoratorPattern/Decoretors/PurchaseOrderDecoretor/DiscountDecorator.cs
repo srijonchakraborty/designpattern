@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DecoratorPattern.Decoretors
+namespace DecoratorPattern.Decoretors.PurchaseOrderDecoretor
 {
     public class DiscountDecorator : IPurchaseOrderDecorator
     {
@@ -20,7 +20,7 @@ namespace DecoratorPattern.Decoretors
         public void Apply(PurchaseOrder order)
         {
             //Here We can add more complex log to calculate discount
-            order.DiscountAmount = order.TotalAmount * (this.discountInPercent / 100);
+            order.DiscountAmount = order.TotalAmount * (discountInPercent / 100);
         }
     }
 }

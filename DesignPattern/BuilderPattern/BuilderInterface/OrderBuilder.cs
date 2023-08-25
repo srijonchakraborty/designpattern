@@ -40,6 +40,11 @@ namespace BuilderPattern.BuilderInterface
             target.ModifiedDate = modifiedDate;
             return this;
         }
+        public OrderBuilder<T> SetClientEmail(string clientEmail)
+        {
+            target.ClientEmail = clientEmail;
+            return this;
+        }
         public OrderBuilder<T> AddOrderItem(IOrderItem item)
         {
             if (target.OrderItems == null)
@@ -50,6 +55,8 @@ namespace BuilderPattern.BuilderInterface
             target.OrderItems.Add(item);
             return this;
         }
+
+
         public OrderBuilder<T> UpdateOrderItem(string itemId, Action<IOrderItem> updateAction)
         {
             if (target.OrderItems != null)

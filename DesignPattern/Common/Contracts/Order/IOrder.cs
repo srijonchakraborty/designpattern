@@ -14,6 +14,7 @@ namespace Common.Contracts.Order
         List<IOrderItem> OrderItems { get; set; }
         DateTime CreateDate { get; set; }
         DateTime ModifiedDate { get; set; }
+        string ClientEmail { get; set; }
     }
 
     public interface IOrderItem

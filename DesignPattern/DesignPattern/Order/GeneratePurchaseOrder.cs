@@ -45,7 +45,8 @@ namespace DesignPattern.Order
                     CreateDate = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                     POType = PurchaseOrderType.Urgent,
-                    TenderNo = "Tender-" + orderNum
+                    TenderNo = "Tender-" + orderNum,
+                    ClientEmail = "srijon@yopmail.com",
                 };
                 purchaseOrderBuildOption.Items = new List<IOrderItem>();
                 for (int itemNum = 1; itemNum <= 5; itemNum++)
@@ -56,11 +57,11 @@ namespace DesignPattern.Order
                         Id = orderId,
                         ItemName = "ABCItem" + itemNum,
                         Quantity = random.Next(5, 20),
-                       
+                        Price = random.Next(21, 30),
                         Unit = "pcs",
                         SupplierName = "Supplier" + itemNum,
-                        SupplierEmail = "supplier" + itemNum + "@example.com"
-                       
+                        SupplierEmail = "supplier" + itemNum + "@yopmail.com"
+
                     };
                     item.ReceivedQuantity = orderNum == 3 ? (int)(item.Quantity / 2) : item.Quantity;
                     item.RejectedQuantity = item.Quantity - item.ReceivedQuantity;
