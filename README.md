@@ -1,4 +1,4 @@
-# Design Patterns Practice Repository
+# Design Patterns Practice Repository .NET C Sharp ( C# )
 
 Welcome to the **Design Patterns Practice** repository! This repository serves as a learning playground for exploring and implementing various design patterns in software development. Currently, it contains examples and implementations of the Builder, Strategy, and Decorator patterns.
 
