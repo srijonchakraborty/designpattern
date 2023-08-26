@@ -23,7 +23,8 @@ namespace DesignPattern
             ReportStrategyPatternImplementation();
             Console.WriteLine("Hello World!");
             Notification finalNotification = BuilderPatternImplementation();
-            DecoratorImplementation.DecoratorPatternImplementation();
+            //DecoratorImplementation.DecoratorPatternImplementation();
+            ProtectionProxyImplementation.ProtectionProxyPatternImplementation();
             Console.ReadLine();
             Console.ReadLine();
             Console.ReadLine();

@@ -17,12 +17,13 @@ namespace DesignPattern.Order
         internal static List<IOrder> GetPOItems()
         {
             List<IOrder> orders = new List<IOrder>();
-            PurchaseOrderBuilder orderBuilder = new PurchaseOrderBuilder();
+            PurchaseOrderBuilder orderBuilder = null;
             IOrderDirector<PurchaseOrderBuilder, PurchaseOrderBuildOption> basicOrderDirector = new PurchaseOrderDirector();
            
             var PurchaseOrderBuildOptionItems = POBuilderOption();
             foreach (var PurchaseOrderBuildOptionItem in PurchaseOrderBuildOptionItems)
             {
+                orderBuilder = new PurchaseOrderBuilder();
                 IOrder order = basicOrderDirector.BuildOrder(orderBuilder, PurchaseOrderBuildOptionItem);
                 orders.Add(order);
             }
