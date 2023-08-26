@@ -9,6 +9,7 @@ Welcome to the **Design Patterns Practice** repository! This repository serves a
   - [Builder Pattern](#builder-pattern)
   - [Strategy Pattern](#strategy-pattern)
   - [Decorator Pattern](#decorator-pattern)
+  - [Proxy Pattern](#proxy-pattern)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [License](#license)
@@ -32,6 +33,22 @@ The Strategy pattern is a behavioral pattern that defines a family of algorithms
 The Decorator pattern is a structural pattern that allows behavior to be added to an object, either statically or dynamically, without affecting its structure. Inside this repository, you'll discover an example of the Decorator pattern, illustrating how to wrap objects with additional behaviors and responsibilities. Using this design pattern I have implementation purchase order tax, discount , shipping fee calculation and also added responsibility to send email and mobile phone notification.
 
 [![Uploading image.png…]()](https://pasteboard.co/6V3wOSNHbF73.png)
+
+### Proxy Pattern 
+
+In this Repository I have also implemented 3 types of Proxy Pattern
+
+#### Protection Proxy
+
+The Protection Proxy restricts access to critical operations or data, ensuring that only authorized users, such as administrators, can modify sensitive properties. In this repository, you can find an example of a Protection Proxy controlling the order status based on user roles. I have updated the PurchaseOrder or SpotPurchase OrderStatus using user Role Permission.
+
+#### Virtual Proxy
+
+The Virtual Proxy delays the creation or loading of resource-intensive objects until they are actually required. This optimization enhances performance and reduces resource consumption. In the code provided, a Virtual Proxy is demonstrated by initializing complex order processing components only when an order needs to be processed.
+
+#### Remote Proxy
+
+The Remote Proxy enables clients to interact with remote services or objects as if they were local. It abstracts the complexities of network communication, allowing operations to be executed on a separate server while maintaining a seamless user experience. This repository showcases a Remote Proxy used for processing orders remotely.
 
 ## Getting Started
 
