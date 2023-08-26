@@ -25,3 +25,5 @@
 /DesignPattern/PhoneService/obj
 /DesignPattern/Services/PhoneService/obj
 /DesignPattern/Services/PhoneService/bin/Debug/net7.0
+/DesignPattern/ProxyPattern/bin/Debug/net7.0
+/DesignPattern/ProxyPattern/obj
