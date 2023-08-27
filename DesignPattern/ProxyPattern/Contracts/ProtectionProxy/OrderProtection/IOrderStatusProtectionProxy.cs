@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProxyPattern.Contracts.ProtectionProxy.OrderProtection
 {
-    public interface IOrderStatusProtectionProxy<T>
+    public interface IOrderStatusProxy<T>
     {
         T CurrentOrder { get; }
         T UpdateStatus(OrderStatus status);

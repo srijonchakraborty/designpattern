@@ -23,7 +23,7 @@ namespace DesignPattern
             int randomIndex =0;
             foreach (var itm in pOItems.ToList())
             {
-                IOrderStatusProtectionProxy<IOrder> orderStatusProxy = new PurchaseOrderStatusProtectionProxy<IOrder>(AllRoles[randomIndex], itm);
+                IOrderStatusProxy<IOrder> orderStatusProxy = new PurchaseOrderStatusProtectionProxy<IOrder>(AllRoles[randomIndex], itm);
                 orderStatusProxy.UpdateStatus(OrderStatus.Cancelled);
                 randomIndex++;
             }
@@ -31,7 +31,7 @@ namespace DesignPattern
             var spOItems = items.OfType<SpotPurchase>().ToList();
             foreach (var itm in spOItems)
             {
-                IOrderStatusProtectionProxy<IOrder> orderStatusProxy = new SpotPurchaseOrderStatusProtectionProxy<IOrder>(AllRoles[randomIndex], itm);
+                IOrderStatusProxy<IOrder> orderStatusProxy = new SpotPurchaseOrderStatusProtectionProxy<IOrder>(AllRoles[randomIndex], itm);
                 orderStatusProxy.UpdateStatus(OrderStatus.Rejected);
                 randomIndex++;
             }
