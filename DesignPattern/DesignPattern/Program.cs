@@ -2,17 +2,25 @@
 using BuilderPattern.BuilderConcrete.NotificationBuilder;
 using Common;
 using Common.DTOs.Email;
+using Common.Mapper;
 using Common.Model.Order;
+using Common.Model.Weather;
 using DecoratorPattern.Contracts;
 using DecoratorPattern.DecoratorProcessor;
 using DecoratorPattern.Decoretors.PurchaseOrderDecoretor;
 using DesignPattern.Order;
 using EmailService.Contracts;
 using EmailService.Services;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Drawing;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DesignPattern
 {
@@ -20,16 +28,17 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+            RemoteProxyImplementation.RemoteProxyPatternImplementation();
             ReportStrategyPatternImplementation();
             Console.WriteLine("Hello World!");
             Notification finalNotification = BuilderPatternImplementation();
             //DecoratorImplementation.DecoratorPatternImplementation();
             ProtectionProxyImplementation.ProtectionProxyPatternImplementation();
+
             Console.ReadLine();
             Console.ReadLine();
             Console.ReadLine();
         }
-
         private static Notification BuilderPatternImplementation()
         {
             Notification noUseObj = new Notification();
@@ -74,5 +83,5 @@ namespace DesignPattern
             orderReportStrategyImplementation.GenerateAllInOneReport();
         }
     }
-
+  
 }

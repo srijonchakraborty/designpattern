@@ -11,7 +11,7 @@ using ProxyPattern.Constrains;
 
 namespace ProxyPattern.Implementation.ProtectionProxy.OrderProtection
 {
-    public class SpotPurchaseOrderStatusProtectionProxy<T> : IOrderStatusProtectionProxy<T> where T : class, IOrder
+    public class SpotPurchaseOrderStatusProtectionProxy<T> : IOrderStatusProxy<T> where T : class, IOrder
     {
         private readonly T currentOrder;
         private readonly string userRole;
