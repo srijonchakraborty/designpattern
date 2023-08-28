@@ -21,7 +21,7 @@ namespace Common.Contracts.Order
     {
         List<IDocument> ItemDocuments { get; set; }
     }
-    public interface IOrderItem 
+    public interface IOrderItem : IOrderItemDocuments
     {
         string Id { get; set; }
         string OrderId { get; set; }

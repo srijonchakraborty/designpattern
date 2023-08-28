@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Common.Model.Order
 {
-    public class OrderItem : IOrderItem, IOrderItemDocuments
+    public class OrderItem : IOrderItem
     {
         public string Id { get; set; }
         public string OrderId { get; set; }
