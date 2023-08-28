@@ -17,12 +17,13 @@ namespace DesignPattern.Order
         internal static List<IOrder> GetSPOItems()
         {
             List<IOrder> orders = new List<IOrder>();
-            SpotPurchaseBuilder orderBuilder = new SpotPurchaseBuilder();
+            SpotPurchaseBuilder orderBuilder = null;
             IOrderDirector<SpotPurchaseBuilder, SpotPurchaseBuildOption> basicOrderDirector = new SpotPurchaseOrderDirector();
            
             var SpotPurchaseBuildOptionItems = SPOBuilderOption();
             foreach (var SpotPurchaseBuildOptionItem in SpotPurchaseBuildOptionItems)
             {
+                orderBuilder = new SpotPurchaseBuilder();
                 IOrder order = basicOrderDirector.BuildOrder(orderBuilder, SpotPurchaseBuildOptionItem);
                 orders.Add(order);
             }

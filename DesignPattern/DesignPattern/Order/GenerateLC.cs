@@ -17,12 +17,13 @@ namespace DesignPattern.Order
         internal static List<IOrder> GetLCItems()
         {
             List<IOrder> orders = new List<IOrder>();
-            LCBuilder orderBuilder = new LCBuilder();
+            LCBuilder orderBuilder =null;
             IOrderDirector<LCBuilder, LCBuildOption> basicOrderDirector = new LCDirector();
            
             var LCBuildOptionItems = LCBuilderOption();
             foreach (var LCBuildOptionItem in LCBuildOptionItems)
             {
+                orderBuilder = new LCBuilder();
                 IOrder order = basicOrderDirector.BuildOrder(orderBuilder, LCBuildOptionItem);
                 orders.Add(order);
             }

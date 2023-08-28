@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyPattern", "Strategy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPattern", "DesignPattern\DesignPattern.csproj", "{03DB9C92-7210-4216-82D1-6306265CD2DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorPattern", "DecoratorPattern\DecoratorPattern.csproj", "{1B822F8C-1F95-4436-8CD0-CA4E820C54DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecoratorPattern", "DecoratorPattern\DecoratorPattern.csproj", "{1B822F8C-1F95-4436-8CD0-CA4E820C54DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servies", "Servies", "{3E4DAE57-6C3C-4CCA-A9A2-57712F2C3037}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelFileService", "Services\ExcelFileService\ExcelFileService.csproj", "{AEA8F23D-778F-4B2F-B6B1-FC5D138ACE2D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneService", "Services\PhoneService\PhoneService.csproj", "{C1DA7585-EFB4-48D3-8F1A-FC1F6AC7A099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyPattern", "ProxyPattern\ProxyPattern.csproj", "{6B20BDB0-8491-4D3B-B20B-EBE2E5C6030B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{C1DA7585-EFB4-48D3-8F1A-FC1F6AC7A099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1DA7585-EFB4-48D3-8F1A-FC1F6AC7A099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1DA7585-EFB4-48D3-8F1A-FC1F6AC7A099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B20BDB0-8491-4D3B-B20B-EBE2E5C6030B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B20BDB0-8491-4D3B-B20B-EBE2E5C6030B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B20BDB0-8491-4D3B-B20B-EBE2E5C6030B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B20BDB0-8491-4D3B-B20B-EBE2E5C6030B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

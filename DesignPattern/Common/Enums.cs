@@ -26,6 +26,8 @@ namespace Common
         Received = 3,
         Rejected = 4,
         Cancelled = 5,
-        Return = 5,
+        Return = 6,
+        Forward = 7,
+        ForceApproved = 7,
     }
 }

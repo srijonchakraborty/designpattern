@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Contracts.Document;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +17,11 @@ namespace Common.Contracts.Order
         DateTime ModifiedDate { get; set; }
         string ClientEmail { get; set; }
     }
-
-    public interface IOrderItem
+    public interface IOrderItemDocuments
+    {
+        List<IDocument> ItemDocuments { get; set; }
+    }
+    public interface IOrderItem : IOrderItemDocuments
     {
         string Id { get; set; }
         string OrderId { get; set; }
