@@ -14,7 +14,7 @@ using OfficeOpenXml.Style;
 
 namespace DesignPattern
 {
-    internal class ProtectionProxyImplementation
+    internal static class ProtectionProxyImplementation
     {
         internal static void ProtectionProxyPatternImplementation()
         {

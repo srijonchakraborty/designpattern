@@ -28,6 +28,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+            VirtualProxyImplementation.VirtualProxyPatternImplementation();
             RemoteProxyImplementation.RemoteProxyPatternImplementation();
             ReportStrategyPatternImplementation();
             Console.WriteLine("Hello World!");
