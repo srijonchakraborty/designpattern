@@ -36,7 +36,7 @@ The Decorator pattern is a structural pattern that allows behavior to be added t
 
 ### Proxy Pattern 
 
-In this Repository I have also implemented 3 types of Proxy Pattern
+As we know that, Proxy Pattern is one type of structural design pattern and in this Repository I have implemented 3 types of Proxy Pattern. 
 
 #### Protection Proxy
 
