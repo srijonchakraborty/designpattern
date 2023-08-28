@@ -1,4 +1,5 @@
-﻿using Common.Contracts.Order;
+﻿using Common.Contracts.Document;
+using Common.Contracts.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Common.Model.Order
 {
-    public class OrderItem : IOrderItem
+    public class OrderItem : IOrderItem, IOrderItemDocuments
     {
         public string Id { get; set; }
         public string OrderId { get; set; }
@@ -20,5 +21,6 @@ namespace Common.Model.Order
         public string Unit { get; set; }
         public string SupplierName { get; set; }
         public string SupplierEmail { get; set; }
+        public List<IDocument> ItemDocuments { get ; set; }
     }
 }
