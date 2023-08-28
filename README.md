@@ -24,15 +24,19 @@ Design patterns are vital tools for software engineering that offer tested, reus
 
 The Builder pattern is a creational pattern that separates the construction of a complex object from its representation, allowing the same construction process to create various representations. In this repository, you can find an example implementation of the Builder pattern, demonstrating its usage in creating complex objects step by step. I have added 2 different example with NotificationBuilder and Order Builder where my pattern class helps me to build PurchaseOrder, LC, and SpotPurchase object using this design pattern.
 
+Check the Link: [Builder Pattern](https://github.com/srijonchakraborty/designpattern/tree/main/DesignPattern/BuilderPattern)
+
 ### Strategy Pattern
 
 The Strategy pattern is a behavioral pattern that defines a family of algorithms, encapsulates each algorithm, and makes them interchangeable. This repository includes a practical implementation of the Strategy pattern, showcasing how different algorithms can be selected and switched dynamically during runtime. From my point of view I belive that it is necessary to learn design pattern from the book and develop some basic concept then try to implement it. In this repo I have used this pattern to generate Excel Report with dynamic report column depending on the object we get. So, depending on object my classes have their own streategy to generate column and set value in it and export as excel file.
+
+Check the Link: [Strategy Pattern](https://github.com/srijonchakraborty/designpattern/tree/main/DesignPattern/StrategyPattern)
 
 ### Decorator Pattern
 
 The Decorator pattern is a structural pattern that allows behavior to be added to an object, either statically or dynamically, without affecting its structure. Inside this repository, you'll discover an example of the Decorator pattern, illustrating how to wrap objects with additional behaviors and responsibilities. Using this design pattern I have implementation purchase order tax, discount , shipping fee calculation and also added responsibility to send email and mobile phone notification.
 
-[![Uploading image.png…]()](https://pasteboard.co/6V3wOSNHbF73.png)
+Check the Link: [Decorator Pattern](https://github.com/srijonchakraborty/designpattern/tree/main/DesignPattern/DecoratorPattern)
 
 ### Proxy Pattern 
 
