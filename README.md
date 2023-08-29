@@ -42,6 +42,8 @@ Check the Link: [Decorator Pattern](https://github.com/srijonchakraborty/designp
 
 As we know that, Proxy Pattern is one type of structural design pattern and in this Repository I have implemented 3 types of Proxy Pattern. 
 
+Check the Link: [Proxy Pattern](https://github.com/srijonchakraborty/designpattern/tree/main/DesignPattern/ProxyPattern)
+
 #### Protection Proxy
 
 The Protection Proxy restricts access to critical operations or data, ensuring that only authorized users, such as administrators, can modify sensitive properties. In this repository, you can find an example of a Protection Proxy controlling the order status based on user roles. I have updated the PurchaseOrder or SpotPurchase OrderStatus using user Role Permission.
