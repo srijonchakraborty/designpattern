@@ -50,7 +50,7 @@ The Protection Proxy restricts access to critical operations or data, ensuring t
 
 #### Virtual Proxy
 
-The Virtual Proxy delays the creation or loading of resource-intensive objects until they are actually required. This optimization enhances performance and reduces resource consumption. In the code provided, a Virtual Proxy is demonstrated by initializing complex order processing components only when an order needs to be processed.
+The Virtual Proxy delays the creation or loading of resource-intensive objects until they are actually required. This optimization enhances performance and reduces resource consumption. In the code provided, a Virtual Proxy is demonstrated by initializing complex order processing components only when an order needs to be processed. I have implemented this pattern in orderitem document. As we know that, documents are resource intensive so I have design the code to read the file only when I need to read the the file. Additionally, I have also used the memory cache to store file and item document after reading the file from then drive. So, in future I can read file from remote server, however, it might be hybrid system of Remote Proxy and Virtual Proxy.
 
 #### Remote Proxy
 
