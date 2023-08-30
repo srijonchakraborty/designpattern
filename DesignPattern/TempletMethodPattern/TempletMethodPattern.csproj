@@ -12,8 +12,4 @@
     <ProjectReference Include="..\Services\PhoneService\PhoneService.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Implementation\OrderProcess\" />
-  </ItemGroup>
-
 </Project>
