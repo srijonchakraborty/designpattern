@@ -10,7 +10,7 @@ Welcome to the **Design Patterns Practice** repository! This repository serves a
   - [Strategy Pattern](#strategy-pattern)
   - [Decorator Pattern](#decorator-pattern)
   - [Proxy Pattern](#proxy-pattern)
-  - [Template Method Pattern](#templet-method-pattern)
+  - [Template Method Pattern](#template-method-pattern)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [License](#license)
