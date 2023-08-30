@@ -10,7 +10,7 @@ Welcome to the **Design Patterns Practice** repository! This repository serves a
   - [Strategy Pattern](#strategy-pattern)
   - [Decorator Pattern](#decorator-pattern)
   - [Proxy Pattern](#proxy-pattern)
-  - [Templet Method Pattern](#templet-method-pattern)
+  - [Template Method Pattern](#templet-method-pattern)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [License](#license)
@@ -57,7 +57,7 @@ The Virtual Proxy delays the creation or loading of resource-intensive objects u
 
 The Remote Proxy enables clients to interact with remote services or objects as if they were local. It abstracts the complexities of network communication, allowing operations to be executed on a separate server while maintaining a seamless user experience. This repository showcases a Remote Proxy used for processing orders remotely. I have used "openweathermap" free package to fetch weather information depending on location. Using this type of pattern I have segregate the part of code or feature from main feature. So, I do not have to change the main code for remote weather data. If any changes required in future I have deal with that class only. There can be other remote scenario like "posting some data to 3 party api" or "fetching remote files". We might have chance to implement caching hare if needed, however, "Virtual Proxy Pattern" is mostly used for caching related functionalities.
 
-### Templet Method Pattern
+### Template Method Pattern
 The Template Method Pattern is a **behavioral design pattern** that defines the structure of an algorithm in a base class, allowing subclasses to provide specific implementations for certain steps while keeping the overall algorithm's framework intact. The design encourages code reuse and guarantees consistency in algorithm execution across many subclasses by encapsulating the common functionality in the template method and allowing modification through abstract methods.
 
 ## Getting Started
