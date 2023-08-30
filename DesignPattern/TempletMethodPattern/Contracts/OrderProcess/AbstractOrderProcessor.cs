@@ -11,35 +11,35 @@ namespace TempleteMethodPattern.Contracts.OrderProcess
     // this code is learning purpose. Not a production code.
     public abstract class AbstractOrderProcessor
     {
-        public async Task ProcessOrder(IOrder purchaseOrder)
+        public async Task ProcessOrder(IOrder order)
         {
             List<string> errors=new List<string>();
             //Here is basic steps of ProcessOrder  
             // Sequences should be like this because this is what the ProcessOrder algorithm is. 
             Console.WriteLine("Start processing order...");
-            errors.AddRange(CheckOrderStatus(purchaseOrder));
-            errors.AddRange(CheckItemDocuments(purchaseOrder));
-            errors.AddRange(AdditioanlValidation(purchaseOrder));
+            errors.AddRange(CheckOrderStatus(order));
+            errors.AddRange(CheckItemDocuments(order));
+            errors.AddRange(AdditionalValidation(order));
             //If we need to check the weather or update any price of any item using current currency value 
             //then We can adde CheckWeather Method and update price and calculate item depending on current currency rate
             // by adding mew method call UpdatePrice/CalculatePrice
-            errors.AddRange(await SendEmailAsync(purchaseOrder));
-            errors.AddRange(await SendPhoneAlertAsync(purchaseOrder));
+            errors.AddRange(await SendEmailAsync(order));
+            errors.AddRange(await SendPhoneAlertAsync(order));
             FinalizeOrder(errors);
             Console.WriteLine("Order processing completed.");
         }
 
-        protected abstract List<string> AdditioanlValidation(IOrder purchaseOrder);
-        protected abstract List<string> CheckOrderStatus(IOrder purchaseOrder);
-        protected abstract List<string> CheckItemDocuments(IOrder purchaseOrder);
+        protected abstract List<string> AdditionalValidation(IOrder order);
+        protected abstract List<string> CheckOrderStatus(IOrder order);
+        protected abstract List<string> CheckItemDocuments(IOrder order);
         
-        protected async virtual Task<List<string>> SendEmailAsync(IOrder purchaseOrder)
+        protected async virtual Task<List<string>> SendEmailAsync(IOrder order)
         {
             //By deafult do not send any email
             //If needed then concrete class will decide how to and To whom the mails are going to be send
             return new List<string>();
         }
-        protected async virtual Task<List<string>> SendPhoneAlertAsync(IOrder purchaseOrder)
+        protected async virtual Task<List<string>> SendPhoneAlertAsync(IOrder order)
         {
             //By deafult do not send any phone alert
             //If needed then concrete class will decide how to and To whom the phone alert are going to be send

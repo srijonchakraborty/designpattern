@@ -19,9 +19,10 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
 {
     public class PurchaseOrderProcessor : AbstractOrderProcessor
     {
-        private readonly List<string> errorList = new List<string>();
+        private List<string> errorList = new List<string>();
         protected async override Task<List<string>> SendEmailAsync(IOrder order)
         {
+            errorList = new List<string>();
             var orderPurchase = order as PurchaseOrder;
             await SendEmail(orderPurchase);
             return errorList;
@@ -58,7 +59,7 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
                 IsBodyHtml = false,
                 Port = 587,
                 Password = "123456789",
-                SmtpClientUrl = ""
+                SmtpClientUrl = "smtp.office365.com"
             };
             return emailConfigDto;
         }
@@ -106,7 +107,7 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
 
         protected async override Task <List<string>> SendPhoneAlertAsync(IOrder order)
         {
-
+            errorList = new List<string>();
             var orderPurchase = order as PurchaseOrder;
             await SendPhoneAlert(orderPurchase);
             return errorList;
@@ -150,8 +151,9 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
             return finalNotification;
         }
      
-        protected override List<string> AdditioanlValidation(IOrder order)
+        protected override List<string> AdditionalValidation(IOrder order)
         {
+            errorList = new List<string>();
             var orderPurchase = order as PurchaseOrder;
             if (orderPurchase != null)
             {
@@ -171,11 +173,12 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
         
         protected override List<string> CheckItemDocuments(IOrder order)
         {
+            errorList = new List<string>();
             foreach (var item in order.OrderItems)
             {
                 if ((item.ItemDocuments?.Count() ?? 0) == 0)
                 {
-                    errorList.Add($"Item: {item.ItemName}, Unit:{item.Unit} Document Not Found.");
+                    errorList.Add($"PO:{order.OrderNo} Item: {item.ItemName}, Unit:{item.Unit} Document Not Found.");
                 }
             }
             return errorList;
@@ -183,6 +186,7 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
        
         protected override List<string> CheckOrderStatus(IOrder order)
         {
+            errorList = new List<string>();
             if (!checkStatus(order))
             {
                 errorList.Add("Status is not in Approved,ForceApproved");

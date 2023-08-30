@@ -16,10 +16,11 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
 {
     public class SpotPurchaseProcessor : AbstractOrderProcessor
     {
-        private readonly List<string> errorList = new List<string>();
+        private List<string> errorList = new List<string>();
         
         protected async override Task<List<string>> SendPhoneAlertAsync(IOrder order)
         {
+            errorList = new List<string>();
             var orderSpotPurchase = order as SpotPurchase;
             await SendPhoneAlert(orderSpotPurchase);
             return errorList;
@@ -63,8 +64,9 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
             return finalNotification;
         }
         
-        protected override List<string> AdditioanlValidation(IOrder order)
+        protected override List<string> AdditionalValidation(IOrder order)
         {
+            errorList = new List<string>();
             var orderSpotPurchase = order as SpotPurchase;
             if (orderSpotPurchase != null)
             {
@@ -83,12 +85,14 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
 
         protected override List<string> CheckItemDocuments(IOrder order)
         {
+            errorList = new List<string>();
             //No need to check documents for items
             return errorList;
         }
 
         protected override List<string> CheckOrderStatus(IOrder order)
         {
+            errorList = new List<string>();
             if (!checkStatus(order))
             {
                 errorList.Add("Status is not in Approved,ForceApproved or in Forward");
