@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace TempletMethodPattern.Contracts.OrderProcess
 {
+    //As we knnow, comments should minimal in a class, however, here are lots of comments in this code, because, 
+    // this code is learning purpose. Not a production code.
     public abstract class AbstractOrderProcessor
     {
         public void ProcessOrder(IOrder purchaseOrder)
@@ -18,6 +20,9 @@ namespace TempletMethodPattern.Contracts.OrderProcess
             errors.AddRange(CheckOrderStatus(purchaseOrder));
             errors.AddRange(CheckItemDocuments(purchaseOrder));
             errors.AddRange(AdditioanlValidation(purchaseOrder));
+            //If we need to check the weather or update any price of any item using current currency value 
+            //then We can adde CheckWeather Method and update price and calculate item depending on current currency rate
+            // by adding mew method call UpdatePrice/CalculatePrice
             errors.AddRange(SendEmail(purchaseOrder));
             errors.AddRange(SendPhoneAlert(purchaseOrder));
             FinalizeOrder(errors);
