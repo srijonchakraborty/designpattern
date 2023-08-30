@@ -28,6 +28,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+            TempleteMethodPatternImplementation.TempleteMethodImplementation();
             ProxyPattern();
             ReportStrategyPatternImplementation();
             Console.WriteLine("Hello World!");
@@ -37,17 +38,6 @@ namespace DesignPattern
             Console.ReadLine();
             Console.ReadLine();
             Console.ReadLine();
-        }
-        void TTT()
-        {
-            // Check Item Documents()
-            // CheckOrderStatus()
-            // CheckWeather()
-            //                           |---- PO  Check Tender and Other
-            // AdditioanlValidation()_________ SPO Check Tender and Other
-            //                           |____ LC  Related check
-            // Send Email() 
-            // Send PhoneAlert()
         }
         private static void ProxyPattern()
         {
