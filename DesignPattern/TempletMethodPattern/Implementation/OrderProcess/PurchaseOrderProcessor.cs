@@ -14,7 +14,7 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
         {
             throw new NotImplementedException();
         }
-        protected override List<string> SendPhoneAlert(IOrder purchaseOrder)
+        protected async Task <List<string>> SendPhoneAlert(IOrder purchaseOrder)
         {
             throw new NotImplementedException();
         }
