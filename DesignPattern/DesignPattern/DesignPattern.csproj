@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -13,6 +13,7 @@
     <ProjectReference Include="..\Services\EmailService\EmailService.csproj" />
     <ProjectReference Include="..\Services\ExcelFileService\ExcelFileService.csproj" />
     <ProjectReference Include="..\StrategyPattern\StrategyPattern.csproj" />
+    <ProjectReference Include="..\TempletMethodPattern\TempleteMethodPattern.csproj" />
   </ItemGroup>
 
 </Project>

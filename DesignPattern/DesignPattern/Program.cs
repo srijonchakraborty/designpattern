@@ -28,18 +28,24 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
-            VirtualProxyImplementation.VirtualProxyPatternImplementation();
-            RemoteProxyImplementation.RemoteProxyPatternImplementation();
+            TempleteMethodPatternImplementation.TempleteMethodImplementation();
+            ProxyPattern();
             ReportStrategyPatternImplementation();
             Console.WriteLine("Hello World!");
             Notification finalNotification = BuilderPatternImplementation();
-            //DecoratorImplementation.DecoratorPatternImplementation();
-            ProtectionProxyImplementation.ProtectionProxyPatternImplementation();
+            DecoratorImplementation.DecoratorPatternImplementation();
 
             Console.ReadLine();
             Console.ReadLine();
             Console.ReadLine();
         }
+        private static void ProxyPattern()
+        {
+            VirtualProxyImplementation.VirtualProxyPatternImplementation();
+            RemoteProxyImplementation.RemoteProxyPatternImplementation();
+            ProtectionProxyImplementation.ProtectionProxyPatternImplementation();
+        }
+
         private static Notification BuilderPatternImplementation()
         {
             Notification noUseObj = new Notification();
