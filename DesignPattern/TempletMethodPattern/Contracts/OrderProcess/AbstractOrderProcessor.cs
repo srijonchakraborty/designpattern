@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TempletMethodPattern.Contracts.OrderProcess
+namespace TempleteMethodPattern.Contracts.OrderProcess
 {
     //As we knnow, comments should minimal in a class, however, here are lots of comments in this code, because, 
     // this code is learning purpose. Not a production code.

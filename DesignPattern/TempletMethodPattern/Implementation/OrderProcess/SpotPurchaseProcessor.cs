@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TempletMethodPattern.Contracts.OrderProcess;
+using TempleteMethodPattern.Contracts.OrderProcess;
 
-namespace TempletMethodPattern.Implementation.OrderProcess
+namespace TempleteMethodPattern.Implementation.OrderProcess
 {
     public class SpotPurchaseProcessor : AbstractOrderProcessor
     {
