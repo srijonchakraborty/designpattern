@@ -17,7 +17,8 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
     public class SpotPurchaseProcessor : AbstractOrderProcessor
     {
         private readonly List<string> errorList = new List<string>();
-        protected async override Task<List<string>> SendPhoneAlert(IOrder order)
+        
+        protected async override Task<List<string>> SendPhoneAlertAsync(IOrder order)
         {
             var orderSpotPurchase = order as SpotPurchase;
             await SendPhoneAlert(orderSpotPurchase);
@@ -82,6 +83,7 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
 
         protected override List<string> CheckItemDocuments(IOrder order)
         {
+            //No need to check documents for items
             return errorList;
         }
 
@@ -93,7 +95,6 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
             }
             return errorList;
         }
-
         private static bool checkStatus(IOrder order)
         {
             return order.OrderStatus == Common.OrderStatus.Approved

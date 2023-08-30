@@ -10,7 +10,7 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
 {
     public class LCOrderProcessor : AbstractOrderProcessor
     {
-        protected override List<string> SendEmail(IOrder purchaseOrder)
+        protected async override Task<List<string>> SendEmailAsync(IOrder purchaseOrder)
         {
             throw new NotImplementedException();
         }

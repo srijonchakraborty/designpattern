@@ -23,8 +23,8 @@ namespace TempleteMethodPattern.Contracts.OrderProcess
             //If we need to check the weather or update any price of any item using current currency value 
             //then We can adde CheckWeather Method and update price and calculate item depending on current currency rate
             // by adding mew method call UpdatePrice/CalculatePrice
-            errors.AddRange(SendEmail(purchaseOrder));
-            errors.AddRange(await SendPhoneAlert(purchaseOrder));
+            errors.AddRange(await SendEmailAsync(purchaseOrder));
+            errors.AddRange(await SendPhoneAlertAsync(purchaseOrder));
             FinalizeOrder(errors);
             Console.WriteLine("Order processing completed.");
         }
@@ -32,13 +32,14 @@ namespace TempleteMethodPattern.Contracts.OrderProcess
         protected abstract List<string> AdditioanlValidation(IOrder purchaseOrder);
         protected abstract List<string> CheckOrderStatus(IOrder purchaseOrder);
         protected abstract List<string> CheckItemDocuments(IOrder purchaseOrder);
-        protected virtual List<string> SendEmail(IOrder purchaseOrder)
+        
+        protected async virtual Task<List<string>> SendEmailAsync(IOrder purchaseOrder)
         {
             //By deafult do not send any email
             //If needed then concrete class will decide how to and To whom the mails are going to be send
             return new List<string>();
         }
-        protected async virtual Task<List<string>> SendPhoneAlert(IOrder purchaseOrder)
+        protected async virtual Task<List<string>> SendPhoneAlertAsync(IOrder purchaseOrder)
         {
             //By deafult do not send any phone alert
             //If needed then concrete class will decide how to and To whom the phone alert are going to be send
