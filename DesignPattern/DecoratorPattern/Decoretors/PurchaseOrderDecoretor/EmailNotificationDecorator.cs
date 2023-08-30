@@ -26,7 +26,7 @@ namespace DecoratorPattern.Decoretors.PurchaseOrderDecoretor
             emailSenderService.SendEmailAsync(notification, emailConfigDto);
         }
 
-        private static Notification GenerateNotification(PurchaseOrder order)
+        private Notification GenerateNotification(PurchaseOrder order)
         {
             Notification noUseObj = new Notification();
             INotificationBuilder notificationEmail = new EmailNotificationBuilder();
@@ -45,7 +45,7 @@ namespace DecoratorPattern.Decoretors.PurchaseOrderDecoretor
             return finalNotification;
         }
 
-        private static void PrepareCcEmails(Dictionary<string, dynamic> notificationInfo, string key, PurchaseOrder order)
+        private void PrepareCcEmails(Dictionary<string, dynamic> notificationInfo, string key, PurchaseOrder order)
         {
             var emails = order?.OrderItems?.Select(c => c.SupplierEmail)?.ToArray();
             if (order != null && emails != null)
@@ -54,7 +54,7 @@ namespace DecoratorPattern.Decoretors.PurchaseOrderDecoretor
             }
         }
 
-        private static string GetEmailBody(PurchaseOrder order)
+        private string GetEmailBody(PurchaseOrder order)
         {
             StringBuilder result = new StringBuilder();
             result.AppendLine($@"Purchase Order:{order.OrderNo} , Date:{order.CreateDate} Total Cost: {order.TotalCost}");
@@ -70,7 +70,7 @@ namespace DecoratorPattern.Decoretors.PurchaseOrderDecoretor
             return result.ToString();
         }
 
-        private static EmailConfigDto PrepareEmailConfig()
+        private EmailConfigDto PrepareEmailConfig()
         {
             EmailConfigDto emailConfigDto = new EmailConfigDto()
             {

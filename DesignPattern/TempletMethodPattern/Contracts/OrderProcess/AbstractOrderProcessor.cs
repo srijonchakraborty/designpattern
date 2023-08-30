@@ -11,7 +11,7 @@ namespace TempleteMethodPattern.Contracts.OrderProcess
     // this code is learning purpose. Not a production code.
     public abstract class AbstractOrderProcessor
     {
-        public void ProcessOrder(IOrder purchaseOrder)
+        public async Task ProcessOrder(IOrder purchaseOrder)
         {
             List<string> errors=new List<string>();
             //Here is basic steps of ProcessOrder  
@@ -24,7 +24,7 @@ namespace TempleteMethodPattern.Contracts.OrderProcess
             //then We can adde CheckWeather Method and update price and calculate item depending on current currency rate
             // by adding mew method call UpdatePrice/CalculatePrice
             errors.AddRange(SendEmail(purchaseOrder));
-            errors.AddRange(SendPhoneAlert(purchaseOrder));
+            errors.AddRange(await SendPhoneAlert(purchaseOrder));
             FinalizeOrder(errors);
             Console.WriteLine("Order processing completed.");
         }
@@ -38,7 +38,7 @@ namespace TempleteMethodPattern.Contracts.OrderProcess
             //If needed then concrete class will decide how to and To whom the mails are going to be send
             return new List<string>();
         }
-        protected virtual List<string> SendPhoneAlert(IOrder purchaseOrder)
+        protected async virtual Task<List<string>> SendPhoneAlert(IOrder purchaseOrder)
         {
             //By deafult do not send any phone alert
             //If needed then concrete class will decide how to and To whom the phone alert are going to be send

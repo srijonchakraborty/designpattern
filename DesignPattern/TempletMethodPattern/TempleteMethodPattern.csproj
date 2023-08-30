@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BuilderPattern\BuilderPattern.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Services\EmailService\EmailService.csproj" />
     <ProjectReference Include="..\Services\PhoneService\PhoneService.csproj" />
