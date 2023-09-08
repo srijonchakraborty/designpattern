@@ -63,6 +63,12 @@ The Remote Proxy enables clients to interact with remote services or objects as 
 ### Template Method Pattern
 The Template Method Pattern is a **behavioral design pattern** that defines the structure of an algorithm in a base class, allowing subclasses to provide specific implementations for certain steps while keeping the overall algorithm's framework intact. The design encourages code reuse and guarantees consistency in algorithm execution across many subclasses by encapsulating the common functionality in the template method and allowing modification through abstract methods. I have create process flow where order can be processed. depending on the status, document check , other validation depending on type of order then send Email and phone alert.
 
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/22c1b925-3667-443a-be4f-928ecf71e623)
+
+Check Image Link 1 : https://pasteboard.co/7UHF142Vh02a.png
+
+Check Image Link 2 : https://paste.pics/23743bb5c89ce9ec86454d7a83018b2f
+
 Check Link: [Template Method Pattern](https://github.com/srijonchakraborty/designpattern/tree/main/DesignPattern/TempletMethodPattern)
 
 ### State Pattern
