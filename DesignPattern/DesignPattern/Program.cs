@@ -1,6 +1,7 @@
 ﻿using BuilderPattern;
 using BuilderPattern.BuilderConcrete.NotificationBuilder;
 using Common;
+using Common.Data;
 using Common.DTOs.Email;
 using Common.Mapper;
 using Common.Model.Order;
@@ -28,6 +29,10 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+            PredefineApprovalRuleData<ApprovalStatus> tt=new PredefineApprovalRuleData<ApprovalStatus>();
+            var ttt1=tt.CheckCondition(tt.GetApprovalRule(), ApprovalStatus.Approved, ApprovalStatus.Draft);
+            ttt1= tt.CheckCondition(tt.GetApprovalRule(), ApprovalStatus.Draft, ApprovalStatus.Approved);
+
             TempleteMethodPatternImplementation.TempleteMethodImplementation();
             ProxyPattern();
             ReportStrategyPatternImplementation();
