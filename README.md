@@ -73,7 +73,9 @@ Check Link: [Template Method Pattern](https://github.com/srijonchakraborty/desig
 
 ### State Pattern
 The state pattern is a behavioral design pattern that allows an object to alter its behavior when its internal state changes. It achieves this by representing each possible state of an object as a separate class and delegating the state-specific behavior to these classes. This pattern promotes cleaner, more modular code by separating the responsibilities related to an object's state into distinct classes.
-![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/3a6f89d4-6f6e-47f0-81aa-b93e05cafdd0)
+
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/9f0ba8d0-6648-4ee2-82f7-8f38d3a75e4b)
+
 
 
 I have designed approval process using state pattern. As you can see in the picture from "Draft" you can go to aprrove, cancel and Inreview status. If you try to change to other that these statuses then item status will remain in draft status. From cancel and reject status you can not go to any other status. Same for the approve status too. From InReview Status you can go to reject, approve and InViewStatus only. For each status, state of the object will be different and it behave differently.
