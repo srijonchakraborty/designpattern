@@ -70,6 +70,7 @@ The state pattern is a behavioral design pattern that allows an object to alter 
 ![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/1da62e91-9a5a-4ff8-b6ae-6b1858edb1e7)
 
 I have designed approval process using state pattern. As you can see in the picture from "Draft" you can go to aprrove, cancel and Inreview status. If you try to change to other that these statuses then item status will remain in draft status. From cancel and reject status you can not go to any other status. Same for the approve status too. From InReview Status you can go to reject, approve and InViewStatus only. For each status, state of the object will be different and it behave differently.
+
 Check Image Link 1: https://pasteboard.co/2v3N3vUX56Ui.png
 Check Image Link 2:https://paste.pics/ef3d85164dd382a62c782fa9e9e2fc54
 ### Momento Pattern
