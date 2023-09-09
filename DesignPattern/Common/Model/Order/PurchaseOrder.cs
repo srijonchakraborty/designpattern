@@ -1,4 +1,5 @@
 ﻿using Common.Contracts.Order;
+using Common.Model.Approval;
 
 namespace Common.Model.Order
 {
@@ -7,7 +8,7 @@ namespace Common.Model.Order
         public PurchaseOrderType POType { get; set; }
         public string TenderNo { get; set; }
         public string Id { get; set; }
-        public OrderStatus OrderStatus { get; set; }
+        public OrderStatus Status { get; set; }
         public string OrderNo { get; set; }
         public List<IOrderItem> OrderItems { get; set; }
         public DateTime CreateDate { get; set; }
@@ -32,5 +33,7 @@ namespace Common.Model.Order
                 return (TotalAmount+ ShippingFee+ TaxAmount)-(DiscountAmount+ LoyaltyDiscount);
             }
         }
+
+        public ApprovalStatus StatusApproval { get; set; }
     }
 }

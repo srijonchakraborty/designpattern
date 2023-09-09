@@ -7,59 +7,31 @@ using System.Threading.Tasks;
 
 namespace Common.Data
 {
-    public class PredefineApprovalRuleData<TStatus>
+    public static class PredefineApprovalRuleData<TStatus>
     {
-        private Dictionary<Func<TStatus, TStatus, bool>, Func<TStatus, TStatus, TStatus>> TransitionRules { get; } = new Dictionary<Func<TStatus, TStatus, bool>, Func<TStatus, TStatus, TStatus>>();
-
-        
-        public Dictionary<Func<TStatus, TStatus, bool>, Func<TStatus, TStatus, TStatus>> GetApprovalRule()
+        public static Dictionary<object, Func<TStatus, TStatus, TStatus>> PrepareApprovalRule()
         {
-            AddTransitionRule((fromStatus, toStatus) => fromStatus !=null 
-                                                        && toStatus != null 
-                                                        && fromStatus.Equals(ApprovalStatus.Draft) 
-                                                        && toStatus.Equals(ApprovalStatus.InReview), (from, to) => to);
-
-            AddTransitionRule((fromStatus, toStatus) => fromStatus != null
-                                                        && toStatus != null
-                                                        && fromStatus.Equals(ApprovalStatus.Draft)
-                                                        && toStatus.Equals(ApprovalStatus.Cancel), (from, to) => to);
-
-            AddTransitionRule((fromStatus, toStatus) => fromStatus != null
-                                                        && toStatus != null
-                                                        && fromStatus.Equals(ApprovalStatus.Draft)
-                                                        && toStatus.Equals(ApprovalStatus.Approved), (from, to) => to);
-
-            AddTransitionRule((fromStatus, toStatus) => fromStatus != null
-                                                        && toStatus != null
-                                                        && fromStatus.Equals(ApprovalStatus.InReview)
-                                                        && toStatus.Equals(ApprovalStatus.Approved), (from, to) => to);
-
-            AddTransitionRule((fromStatus, toStatus) => fromStatus != null
-                                                        && toStatus != null
-                                                        && fromStatus.Equals(ApprovalStatus.InReview)
-                                                        && toStatus.Equals(ApprovalStatus.Reject), (from, to) => to);
-
-            return TransitionRules;
-        }
-        private void AddTransitionRule(Func<TStatus, TStatus, bool> condition, Func<TStatus, TStatus, TStatus> targetState)
-        {
-            TransitionRules[condition] = targetState;
+            Dictionary<object, Func<TStatus, TStatus, TStatus>> ApprovalRules = new Dictionary<object, Func<TStatus, TStatus, TStatus>>();
+            ApprovalRules.Add(new { From = ApprovalStatus.Draft, To = ApprovalStatus.InReview }, (from, to) => to);
+            ApprovalRules.Add(new { From = ApprovalStatus.Draft, To = ApprovalStatus.Cancel }, (from, to) => to);
+            ApprovalRules.Add(new { From = ApprovalStatus.Draft, To = ApprovalStatus.Approved }, (from, to) => to);
+            ApprovalRules.Add(new { From = ApprovalStatus.InReview, To = ApprovalStatus.Approved }, (from, to) => to);
+            ApprovalRules.Add(new { From = ApprovalStatus.InReview, To = ApprovalStatus.Reject }, (from, to) => to);
+            return ApprovalRules;
         }
 
-        public TStatus? CheckCondition(Dictionary<Func<TStatus, TStatus, bool>, Func<TStatus, TStatus, TStatus>>  rules, TStatus currentStatus, TStatus nextStatus)
+        public static TStatus? CheckCondition(Dictionary<object, Func<TStatus, TStatus, TStatus>> rules, TStatus currentStatus, TStatus nextStatus)
         {
-            foreach (var rule in rules)
+            var targetKey = new { From = currentStatus, To = nextStatus };
+            if (rules.ContainsKey(targetKey))
             {
-                var condition = rule.Key;
-                var targetState = rule.Value;
-                if (condition(currentStatus, nextStatus))
-                {
-                    var status = targetState(currentStatus, nextStatus);
-                    return status;
-                }
+                var targetStatusDelegate = rules[targetKey];
+                return targetStatusDelegate.Invoke(currentStatus, nextStatus);
             }
-            return currentStatus;
+            else
+            {
+                return currentStatus;
+            }
         }
-
     }
 }

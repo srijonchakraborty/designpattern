@@ -29,9 +29,8 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
-            PredefineApprovalRuleData<ApprovalStatus> tt=new PredefineApprovalRuleData<ApprovalStatus>();
-            var ttt1=tt.CheckCondition(tt.GetApprovalRule(), ApprovalStatus.Approved, ApprovalStatus.Draft);
-            ttt1= tt.CheckCondition(tt.GetApprovalRule(), ApprovalStatus.Draft, ApprovalStatus.Approved);
+            //PredefineApprovalRuleData<ApprovalStatus> tt=new PredefineApprovalRuleData<ApprovalStatus>();
+            //ApprovalStatus ppp1 = tt.CheckCondition(tt.PrepareApprovalRule(), ApprovalStatus.Draft, ApprovalStatus.Approved);
 
             TempleteMethodPatternImplementation.TempleteMethodImplementation();
             ProxyPattern();

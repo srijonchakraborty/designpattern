@@ -39,4 +39,10 @@ namespace Common
         Reject = 3,
         Cancel = 4
     }
+    public enum ApprovalReferenceType
+    {
+        LC = 0,
+        PO = 1,
+        SPO = 2
+    }
 }

@@ -146,7 +146,7 @@ namespace TempleteMethodPattern.Implementation.OrderProcess
         }
         private static bool checkStatus(IOrder order)
         {
-            return order.OrderStatus == Common.OrderStatus.Approved;
+            return order.Status == Common.OrderStatus.Approved;
         }
     }
 }
