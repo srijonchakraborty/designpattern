@@ -28,6 +28,13 @@ Design patterns are vital tools for software engineering that offer tested, reus
 
 The Builder pattern is a **creational pattern** that separates the construction of a complex object from its representation, allowing the same construction process to create various representations. In this repository, you can find an example implementation of the Builder pattern, demonstrating its usage in creating complex objects step by step. I have added 2 different example with NotificationBuilder and Order Builder where my pattern class helps me to build PurchaseOrder, LC, and SpotPurchase object using this design pattern.
 
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/5df13642-6a41-4c30-a607-f552c455c6c9)
+
+
+Check link 1: https://pasteboard.co/s8WXBt8M5LIR.png
+
+Check Link 2: https://paste.pics/46fce1e72419322b72df72b716b21ffe
+
 Check the Link: [Builder Pattern](https://github.com/srijonchakraborty/designpattern/tree/main/DesignPattern/BuilderPattern)
 
 ### Strategy Pattern
