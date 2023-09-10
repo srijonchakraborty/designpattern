@@ -27,9 +27,8 @@ namespace StatePattern.Implementation.ApprovalContext.OrderApprovalContext
         protected BaseApprovalContext(IOrder currentObject)
         {
             _currentObject = currentObject;
-            //_currentApprovalState = new DraftState<T>();
         }
-        public abstract void ProcessToNext(ApprovalStatus from, ApprovalStatus to, OrderStatus tomodelStatus, string performBy);
+        public abstract bool ProcessToNext(ApprovalStatus from, ApprovalStatus to, OrderStatus tomodelStatus, string performBy);
         public void SetCurrentApprovalState(IApprovalState<IOrder, OrderStatus, ApprovalStatus> currentApprovalState)
         {
             _currentApprovalState = currentApprovalState;

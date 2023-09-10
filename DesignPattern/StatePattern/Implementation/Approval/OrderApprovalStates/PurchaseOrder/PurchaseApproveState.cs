@@ -12,6 +12,7 @@ namespace StatePattern.Implementation.Approval.OrderApprovalStates.PurchaseOrder
             context.CurrentObject.Status = modelStatus;
 
             // We can call repository to upsert AllApprovalHistory for current context
+            //Send Reject email to IOrder creator that request approved
             var history = context.GetAllApprovalHistory();
         }
     }

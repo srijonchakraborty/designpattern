@@ -1,6 +1,10 @@
 ﻿using Common;
 using Common.Contracts.Order;
+using Common.Data;
 using Common.Model.Approval;
+using StatePattern.Contracts.Approval;
+using StatePattern.Implementation.Approval.OrderApprovalStates.PurchaseOrder;
+using System.Runtime.InteropServices;
 
 namespace StatePattern.Implementation.ApprovalContext.OrderApprovalContext
 {
@@ -8,16 +12,20 @@ namespace StatePattern.Implementation.ApprovalContext.OrderApprovalContext
     {
         public PurchaseOrderApprovalContext(IOrder currentObject) : base(currentObject)
         {
-
+            SetCurrentApprovalState(GetState(currentObject.StatusApproval));
         }
-        public override void ProcessToNext(ApprovalStatus from, ApprovalStatus to, OrderStatus tomodelStatus, string performBy)
+        public override bool ProcessToNext(ApprovalStatus from, ApprovalStatus to, OrderStatus tomodelStatus, string performBy)
         {
-            var targetKey = new { From = from, To = to };
-            if (CurrentApprovalState!=null && ApprovalRules.ContainsKey(targetKey))
+            bool result = false;
+            var allowedNextStatus= PredefineApprovalRuleData<ApprovalStatus>.CheckCondition(ApprovalRules,from, to);
+            if (CurrentApprovalState!=null && allowedNextStatus== to)
             {
                 SetHistory(from, to, performBy);
+                SetCurrentApprovalState(GetState(allowedNextStatus));
                 CurrentApprovalState.Process(this, tomodelStatus, to);
+                result=true;
             }
+            return result;
         }
 
         private void SetHistory(ApprovalStatus from, ApprovalStatus to, string performBy)
@@ -33,6 +41,30 @@ namespace StatePattern.Implementation.ApprovalContext.OrderApprovalContext
                 ReferenceId = CurrentObject.Id,
                 ReferenceType = ApprovalReferenceType.PO
             });
+        }
+
+        private IApprovalState<IOrder, OrderStatus, ApprovalStatus> GetState(ApprovalStatus statusApproval)
+        {
+            if (statusApproval == ApprovalStatus.Approved)
+            {
+                return new PurchaseApproveState();
+            }
+            else if (statusApproval == ApprovalStatus.Cancel)
+            {
+                return new PurchaseCancelState();
+            }
+            else if (statusApproval == ApprovalStatus.Reject)
+            {
+                return new PurchaseRejectState();
+            }
+            else if (statusApproval == ApprovalStatus.InReview)
+            {
+                return new PurchaseInReviewState();
+            }
+            else 
+            {
+                return new PurchaseDraftState();
+            }
         }
     }
 }

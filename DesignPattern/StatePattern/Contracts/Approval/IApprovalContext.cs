@@ -18,7 +18,7 @@ namespace StatePattern.Contracts.Approval
         IApprovalState<T, TModelStatus, TStatus> CurrentApprovalState { get; }
         T CurrentObject { get; }
         List<ApprovalHistory<TModelStatus, TStatus>> GetAllApprovalHistory();
-        void ProcessToNext(TStatus from, TStatus to, TModelStatus toModelStatus,string performBy);
+        bool ProcessToNext(TStatus from, TStatus to, TModelStatus toModelStatus,string performBy);
         void SetCurrentApprovalState(IApprovalState<IOrder, OrderStatus, ApprovalStatus> currentApprovalState);
     }
 }
