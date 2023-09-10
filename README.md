@@ -69,6 +69,13 @@ Check Image: https://paste.pics/06b2068edb52655a612313e8f0b394a6
 
 The Virtual Proxy delays the creation or loading of resource-intensive objects until they are actually required. This optimization enhances performance and reduces resource consumption. In the code provided, a Virtual Proxy is demonstrated by initializing complex order processing components only when an order needs to be processed. I have implemented this pattern in orderitem document. As we know that, documents are resource intensive so I have design the code to read the file only when I need to read the the file. Additionally, I have also used the memory cache to store file and item document after reading the file from then drive. So, in future I can read file from remote server, however, it might be hybrid system of Remote Proxy and Virtual Proxy.
 
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/e1597ff6-9a71-4e3d-855f-ba801dae23f4)
+
+Check Link: https://paste.pics/42ff8983cdcef5978519752d91661232
+
+Check Link: https://pasteboard.co/YV1OtUOHrmPd.png
+
+
 #### Remote Proxy
 
 The Remote Proxy enables clients to interact with remote services or objects as if they were local. It abstracts the complexities of network communication, allowing operations to be executed on a separate server while maintaining a seamless user experience. This repository showcases a Remote Proxy used for processing orders remotely. I have used "openweathermap" free package to fetch weather information depending on location. Using this type of pattern I have segregate the part of code or feature from main feature. So, I do not have to change the main code for remote weather data. If any changes required in future I have deal with that class only. There can be other remote scenario like "posting some data to 3 party api" or "fetching remote files". We might have chance to implement caching hare if needed, however, "Virtual Proxy Pattern" is mostly used for caching related functionalities.
