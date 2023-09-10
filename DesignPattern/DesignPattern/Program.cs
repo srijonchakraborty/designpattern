@@ -1,6 +1,7 @@
 ﻿using BuilderPattern;
 using BuilderPattern.BuilderConcrete.NotificationBuilder;
 using Common;
+using Common.Data;
 using Common.DTOs.Email;
 using Common.Mapper;
 using Common.Model.Order;
@@ -28,6 +29,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+            StatePatternApprovalImplementation.StatePatternImplementation();
             TempleteMethodPatternImplementation.TempleteMethodImplementation();
             ProxyPattern();
             ReportStrategyPatternImplementation();

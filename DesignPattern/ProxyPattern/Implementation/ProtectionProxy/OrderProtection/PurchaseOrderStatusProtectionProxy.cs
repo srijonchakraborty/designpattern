@@ -34,19 +34,19 @@ namespace ProxyPattern.Implementation.ProtectionProxy.OrderProtection
         {
             if (CheckApproverPermission(status))
             {
-                this.CurrentOrder.OrderStatus = status;
+                this.CurrentOrder.Status = status;
             }
             else if (CheckCancelOrRejectPermission(status))
             {
-                this.CurrentOrder.OrderStatus = status;
+                this.CurrentOrder.Status = status;
             }
             else if (CheckForwardPermission(status))
             {
-                this.CurrentOrder.OrderStatus = status;
+                this.CurrentOrder.Status = status;
             }
             else if (CheckReceivePermission(status))
             {
-                this.CurrentOrder.OrderStatus = status;
+                this.CurrentOrder.Status = status;
             }
 
             return this.CurrentOrder;

@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneService", "Services\Ph
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProxyPattern", "ProxyPattern\ProxyPattern.csproj", "{6B20BDB0-8491-4D3B-B20B-EBE2E5C6030B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempleteMethodPattern", "TempletMethodPattern\TempleteMethodPattern.csproj", "{A9EA06C1-CA99-416B-90CE-7125ABFF7EF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempleteMethodPattern", "TempletMethodPattern\TempleteMethodPattern.csproj", "{A9EA06C1-CA99-416B-90CE-7125ABFF7EF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatePattern", "StatePattern\StatePattern.csproj", "{AF802F3B-C7E0-4344-B213-0ECFF105849B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{A9EA06C1-CA99-416B-90CE-7125ABFF7EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9EA06C1-CA99-416B-90CE-7125ABFF7EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9EA06C1-CA99-416B-90CE-7125ABFF7EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF802F3B-C7E0-4344-B213-0ECFF105849B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF802F3B-C7E0-4344-B213-0ECFF105849B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF802F3B-C7E0-4344-B213-0ECFF105849B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF802F3B-C7E0-4344-B213-0ECFF105849B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

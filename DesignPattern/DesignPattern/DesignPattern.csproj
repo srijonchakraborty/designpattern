@@ -12,6 +12,7 @@
     <ProjectReference Include="..\ProxyPattern\ProxyPattern.csproj" />
     <ProjectReference Include="..\Services\EmailService\EmailService.csproj" />
     <ProjectReference Include="..\Services\ExcelFileService\ExcelFileService.csproj" />
+    <ProjectReference Include="..\StatePattern\StatePattern.csproj" />
     <ProjectReference Include="..\StrategyPattern\StrategyPattern.csproj" />
     <ProjectReference Include="..\TempletMethodPattern\TempleteMethodPattern.csproj" />
   </ItemGroup>

@@ -17,7 +17,7 @@ namespace BuilderPattern.BuilderInterface
         }
         public OrderBuilder<T> SetOrderStatus(OrderStatus orderStatus)
         {
-            target.OrderStatus = orderStatus;
+            target.Status = orderStatus;
             return this;
         }
         public OrderBuilder<T> SetOrderNo(string orderNo)

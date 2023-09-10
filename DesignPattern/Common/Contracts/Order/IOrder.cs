@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace Common.Contracts.Order
 {
-    public interface IOrder
+
+    public interface IApproval<TModelStatus, TStatus>
+    {
+        TModelStatus Status { get; set; }
+        TStatus StatusApproval { get; set; }
+    }
+
+    public interface IOrder : IApproval<OrderStatus,ApprovalStatus>
     {
         string Id { get; set; }
-        OrderStatus OrderStatus { get; set; }
         string OrderNo { get; set; }
         List<IOrderItem> OrderItems { get; set; }
         DateTime CreateDate { get; set; }

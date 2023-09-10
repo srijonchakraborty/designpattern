@@ -30,4 +30,19 @@ namespace Common
         Forward = 7,
         ForceApproved = 7,
     }
+
+    public enum ApprovalStatus
+    {
+        Draft = 0,
+        InReview = 1,
+        Approved = 2,
+        Reject = 3,
+        Cancel = 4
+    }
+    public enum ApprovalReferenceType
+    {
+        LC = 0,
+        PO = 1,
+        SPO = 2
+    }
 }

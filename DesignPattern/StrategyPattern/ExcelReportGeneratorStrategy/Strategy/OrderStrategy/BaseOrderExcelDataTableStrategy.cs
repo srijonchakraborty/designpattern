@@ -42,7 +42,7 @@ namespace StrategyPattern.ExcelReportGeneratorStrategy.Strategy.OrderStrategy
         {
             row[orderSpecificColumns["OrderNo"]] = order.OrderNo;
             row[orderSpecificColumns["CreateDate"]] = order.CreateDate;
-            row[orderSpecificColumns["OrderStatus"]] = order.OrderStatus.ToString();
+            row[orderSpecificColumns["OrderStatus"]] = order.Status.ToString();
             row[orderSpecificColumns["Orders"]] = order.GetOrderItemDetails();
         }
         private void AddBaseColumns()
