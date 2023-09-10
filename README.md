@@ -59,6 +59,12 @@ Check the Link: [Proxy Pattern](https://github.com/srijonchakraborty/designpatte
 
 The Protection Proxy restricts access to critical operations or data, ensuring that only authorized users, such as administrators, can modify sensitive properties. In this repository, you can find an example of a Protection Proxy controlling the order status based on user roles. I have updated the PurchaseOrder or SpotPurchase OrderStatus using user Role Permission.
 
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/c2b071b3-5f59-4f91-b1de-75f41ac309f8)
+
+Check Image: https://pasteboard.co/wsMGvm14aBJE.png
+
+Check Image: https://paste.pics/06b2068edb52655a612313e8f0b394a6
+
 #### Virtual Proxy
 
 The Virtual Proxy delays the creation or loading of resource-intensive objects until they are actually required. This optimization enhances performance and reduces resource consumption. In the code provided, a Virtual Proxy is demonstrated by initializing complex order processing components only when an order needs to be processed. I have implemented this pattern in orderitem document. As we know that, documents are resource intensive so I have design the code to read the file only when I need to read the the file. Additionally, I have also used the memory cache to store file and item document after reading the file from then drive. So, in future I can read file from remote server, however, it might be hybrid system of Remote Proxy and Virtual Proxy.
