@@ -116,7 +116,21 @@ Check code link: https://github.com/srijonchakraborty/designpattern/tree/main/De
 
 ### Memento Pattern
 
+
+#### Memento Pattern vs  State Pattern
+
+|  Topic  |                     Memento Pattern                  |                     State Pattern                    |
+| ------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| Purpose | The Memento Pattern is used to capture the internal state of an object and externalize it so that the object can be restored to that state later. | The State Pattern is used to allow an object to alter its behavior when its internal state changes. |
+| Purpose | It provides a way to save and restore the state of an object without exposing its internal structure. |It encapsulates the different states of an object into separate classes and allows the object to switch between these states at runtime without altering its interface. |
+| Participants| In the Memento Pattern, you have three main participants as well<br />Originator -> The object whose state needs to be saved.<br />Memento -> An object that stores the state of the originator.<br />Caretaker -> The object responsible for storing and managing the mementos. | In the State Pattern, you typically have three main participants<br />Context -> The object whose behavior changes based on its internal state.<br />State -> An interface or abstract class representing a specific state.<br />Concrete States -> Concrete implementations of the State interface, each defining the behavior associated with a particular state.|
+| Usage |  It is used when you want to capture and restore an object's state. This is useful in scenarios like implementing undo/redo functionality in a text editor or saving and restoring the state of a game. | It is used when an object needs to change its behavior dynamically based on its internal state. For example, a context-aware vending machine that behaves differently depending on whether it has enough change or not. |    
+|  Relationship  | The Memento Pattern is often used alongside the Command Pattern or the Undo/Redo Pattern. Also it can be used with facade pattern too. | The State Pattern is often used in conjunction with the Strategy Pattern. In different situation it can be used with other patterns too.  |
+
+
 ### Facade Pattern
+
+
 
 ## Getting Started
 
