@@ -29,6 +29,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+            FacadePatternImplementationWithPrototypeAndMemento.FacadePatternImplementation();
             StatePatternApprovalImplementation.StatePatternImplementation();
             TempleteMethodPatternImplementation.TempleteMethodImplementation();
             ProxyPattern();

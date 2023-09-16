@@ -13,7 +13,6 @@ namespace FacadePattern.Contract
         void IncreaseStock(string stockId, double quantity);
         void DecreaseStock(string stockId, double quantity);
         List<Stock> GetAllStocks();
-        void UndoLastAction();
-        bool CheckStockInconsistency();
+        List<StockTransactionHistory> GetAllStockTransactionHistory(string stockid);
     }
 }

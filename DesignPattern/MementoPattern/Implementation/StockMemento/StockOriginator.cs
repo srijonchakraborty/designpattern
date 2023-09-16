@@ -99,7 +99,7 @@ namespace MementoPattern.Implementation.StockMemento
             return false;
         }
 
-        public void SaveMemento(Stock stock)
+        private void SaveMemento(Stock stock)
         {
             StockTransactionHistory history= PrepareStockTransactionHistory(stock);
             mementoHistory.SetStockTransactionHistory(history);

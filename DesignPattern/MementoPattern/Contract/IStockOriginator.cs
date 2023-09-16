@@ -11,14 +11,12 @@ namespace MementoPattern.Contract
 {
     public interface IStockOriginator
     {
-        StockRepository Repository { get; }
         StockMemento MementoHistory { get; }
         void AddStock(Stock stock);
         void IncreaseStock(string stockId, double quantity);
         void DecreaseStock(string stockId, double quantity);
         List<Stock> GetAllStocks();
         void UndoLastTransaction();
-        void SaveMemento(Stock stock);
         bool CheckStockInconsistency();
     }
 }
