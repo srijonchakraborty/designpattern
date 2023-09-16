@@ -58,6 +58,10 @@ namespace MementoPattern.Implementation.StockMemento
             stock.StockQuantity -= quantity;
             repository.UpdateStock(stock);
             SaveMemento(stock);
+            if (CheckStockInconsistency())
+            {
+                UndoLastTransaction();
+            }
         }
 
         public List<Stock> GetAllStocks()
@@ -77,7 +81,10 @@ namespace MementoPattern.Implementation.StockMemento
             stock.StockQuantity += quantity;
             repository.UpdateStock(stock);
             SaveMemento(stock);
-            Console.WriteLine($"Increased stock of {stockId} by {quantity} units.");
+            if (CheckStockInconsistency())
+            {
+                UndoLastTransaction();
+            }
         }
         public bool CheckStockInconsistency()
         {
@@ -119,6 +126,13 @@ namespace MementoPattern.Implementation.StockMemento
 
         public void UndoLastTransaction()
         {
+            if (mementoHistory.StockTransactionHistories.Count > 1)
+            {
+                var restorePoint=mementoHistory.StockTransactionHistories[mementoHistory.StockTransactionHistories.Count - 2];
+                var stock = repository.GetStock(restorePoint.CurrentStockAtTheMoment.Id);
+                stock.StockQuantity = restorePoint.CurrentStockAtTheMoment.StockQuantity;
+                repository.UpdateStock(stock);
+            }
             mementoHistory.RemoveLastTransactionHistory();
         }
     }
