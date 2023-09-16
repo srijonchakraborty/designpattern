@@ -58,10 +58,6 @@ namespace MementoPattern.Implementation.StockMemento
             stock.StockQuantity -= quantity;
             repository.UpdateStock(stock);
             SaveMemento(stock);
-            if (CheckStockInconsistency())
-            {
-                UndoLastTransaction();
-            }
         }
 
         public List<Stock> GetAllStocks()
@@ -81,10 +77,6 @@ namespace MementoPattern.Implementation.StockMemento
             stock.StockQuantity += quantity;
             repository.UpdateStock(stock);
             SaveMemento(stock);
-            if (CheckStockInconsistency())
-            {
-                UndoLastTransaction();
-            }
         }
         public bool CheckStockInconsistency()
         {
