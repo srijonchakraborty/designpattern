@@ -116,6 +116,12 @@ Check Image Link 2:https://paste.pics/ef3d85164dd382a62c782fa9e9e2fc54
 Check code link: https://github.com/srijonchakraborty/designpattern/tree/main/DesignPattern/StatePattern
 
 ### Memento Pattern
+The Memento Pattern is a **behavioral design pattern** that provides a way to capture and externalize an object's internal state, allowing the object to be restored to that state at a later time without exposing its internal structure. In this example, I have used the StockMememto to store the state of stock where quantity is important after every transaction I have check the Inconsistency. If found the updo the transaction. The client/ caller / Caretaker of this example is a facade class. So, main design pattern was facade and from that I called the memento pattern after that from the memento pattern I have called the prototype pattern to deep clone the Stock object.
+
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/9d313da2-c3cc-41fc-9948-952279dfbc80)
+
+Check Link: https://pasteboard.co/bOfEI068d3Mp.png
+
 
 
 #### Memento Pattern vs  State Pattern
