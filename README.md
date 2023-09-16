@@ -146,6 +146,12 @@ Check Link: https://pasteboard.co/J8Dp6yb5QyVr.png
 
 
 ### Facade Pattern
+The Facade pattern is a **structural design pattern** in software engineering that provides a simplified and unified interface to a set of interfaces or subsystems within a larger system. It is a way to hide the complexities of the underlying components and present a high-level, simplified interface to clients. In this example, I have created a very basic stock management facade which is responsible for insert, update the stock. It is also tracking the stock consistency using the memento pattern. In a simple sense using this structural pattern I have hode the complext calculation and complexity of using differnt classes is hidden and a simple high level interface(methods) are expose to the client to perform complex task in a very easy way.
+
+
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/c24e1743-6b2c-40a1-99ea-b34441d0689c)
+
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/9fce2aa7-fb11-419d-b383-6f4450133d1e)
 
 
 
