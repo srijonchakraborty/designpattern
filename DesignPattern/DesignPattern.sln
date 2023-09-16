@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProxyPattern", "ProxyPatter
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempleteMethodPattern", "TempletMethodPattern\TempleteMethodPattern.csproj", "{A9EA06C1-CA99-416B-90CE-7125ABFF7EF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatePattern", "StatePattern\StatePattern.csproj", "{AF802F3B-C7E0-4344-B213-0ECFF105849B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatePattern", "StatePattern\StatePattern.csproj", "{AF802F3B-C7E0-4344-B213-0ECFF105849B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MementoPattern", "MementoPattern\MementoPattern.csproj", "{1080E0B6-A619-43C9-8284-ED958420B3EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{AF802F3B-C7E0-4344-B213-0ECFF105849B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF802F3B-C7E0-4344-B213-0ECFF105849B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF802F3B-C7E0-4344-B213-0ECFF105849B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1080E0B6-A619-43C9-8284-ED958420B3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1080E0B6-A619-43C9-8284-ED958420B3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1080E0B6-A619-43C9-8284-ED958420B3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1080E0B6-A619-43C9-8284-ED958420B3EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
