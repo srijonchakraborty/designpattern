@@ -9,7 +9,8 @@ namespace MementoPattern.Contract
 {
     public interface IStockMemento
     {
-        List<StockTransactionHistory> StockTransactionHistories { get; }
+        // IReadOnlyList
+        IReadOnlyList<StockTransactionHistory> StockTransactionHistories { get; }
         void SetStockTransactionHistory(StockTransactionHistory history);
         void RemoveStockTransactionHistory(List<StockTransactionHistory> histories);
     }

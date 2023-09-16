@@ -14,33 +14,30 @@ namespace MementoPattern.Implementation.StockMemento
         private readonly List<Stock> stocks = new List<Stock>();
         public StockOriginator()
         {
-            _repository=new StockRepository();//this will be injected and set here
-            _mementoHistory =new StockMemento();
+            repository = new StockRepository();//this will be injected and set here
+            mementoHistory = new StockMemento();
         }
 
-        private readonly StockRepository _repository;
+        private readonly StockRepository repository;
         public StockRepository Repository
         {
-            get { return _repository; }
+            get { return repository; }
         }
-        private readonly StockMemento _mementoHistory;
+        private readonly StockMemento mementoHistory;
         public StockMemento MementoHistory
         {
-            get { return _mementoHistory; }
+            get { return mementoHistory; }
         }
 
         public void AddStock(Stock stock)
         {
-            _repository.AddStock(stock);
+            repository.AddStock(stock);
             stocks.Add(stock);
             SaveMemento();
             Console.WriteLine($"Added new Stock: {stock.Item?.ItemName}");
         }
 
-        public bool CheckStockInconsistency()
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public void DecreaseStock(string stockId, int quantity)
         {
@@ -49,19 +46,34 @@ namespace MementoPattern.Implementation.StockMemento
 
         public List<Stock> GetAllStocks()
         {
-            throw new NotImplementedException();
+            return repository.GetAllStocks();
         }
 
         public void IncreaseStock(string stockId, int quantity)
         {
-            throw new NotImplementedException();
-        }
+            var stock = repository.GetStock(stockId);
+            if (stock == null)
+            {
+                Console.WriteLine($"Error: Stock '{stockId}' not found.");
+                return;
+            }
 
+            stock.StockQuantity += quantity;
+            repository.UpdateStock(stock);
+            SaveMemento();
+            Console.WriteLine($"Increased stock of {stockId} by {quantity} units.");
+        }
+        public bool CheckStockInconsistency()
+        {
+            return false;
+
+        }
         public void SaveMemento()
         {
-            //new StockMemento(products)
-            //_mementoHistory.SetStockTransactionHistory();
-            ////currentIndex = mementoHistory.Count - 1;
+            //need prototype pattern to clone object of stock and set StockTransactionHistory
+            //Build new StockTransactionHistory
+            mementoHistory.SetStockTransactionHistory(new StockTransactionHistory());
+           
         }
 
         public void UndoLastTransaction()

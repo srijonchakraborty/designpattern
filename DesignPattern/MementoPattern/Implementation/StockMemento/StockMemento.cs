@@ -16,7 +16,7 @@ namespace MementoPattern.Implementation.StockMemento
         }
        
         private readonly List<StockTransactionHistory> _stockTransactionHistories;
-        public List<StockTransactionHistory> StockTransactionHistories
+        public IReadOnlyList<StockTransactionHistory> StockTransactionHistories
         {
             get { return _stockTransactionHistories; }
         }
