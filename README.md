@@ -13,6 +13,7 @@ Welcome to the **Design Patterns Practice** repository! This repository serves a
   - [Template Method Pattern](#template-method-pattern)
   - [State Pattern](#state-pattern)  
   - [Memento Pattern](#momento-pattern)
+  - [Prototype Pattern](#prototype-pattern)
   - [Facade Pattern](#facade-pattern)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
@@ -126,6 +127,16 @@ Check code link: https://github.com/srijonchakraborty/designpattern/tree/main/De
 | Participants| In the Memento Pattern, you have three main participants as well<br />Originator -> The object whose state needs to be saved.<br />Memento -> An object that stores the state of the originator.<br />Caretaker -> The object responsible for storing and managing the mementos. | In the State Pattern, you typically have three main participants<br />Context -> The object whose behavior changes based on its internal state.<br />State -> An interface or abstract class representing a specific state.<br />Concrete States -> Concrete implementations of the State interface, each defining the behavior associated with a particular state.|
 | Usage |  It is used when you want to capture and restore an object's state. This is useful in scenarios like implementing undo/redo functionality in a text editor or saving and restoring the state of a game. | It is used when an object needs to change its behavior dynamically based on its internal state. For example, a context-aware vending machine that behaves differently depending on whether it has enough change or not. |    
 |  Relationship  | The Memento Pattern is often used alongside the Command Pattern or the Undo/Redo Pattern. Also it can be used with facade pattern too. | The State Pattern is often used in conjunction with the Strategy Pattern. In different situation it can be used with other patterns too.  |
+
+
+### Prototype Pattern
+The Prototype Pattern is a **creational** design pattern that allows you to create new objects by copying an existing object, known as the prototype. Here I have used Prototype Pattern using either the Shallow Copy or Deep Copy approach, depending on your requirements. To clone the **"stock"** object
+I have used Shallow copy and deepcopy process. I have also added Json Deep copy and manual deep copy to explain the Prototype pattern properly.
+
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/f592cd11-dd97-4fc8-a318-9e7faf358d31)
+
+
+Check Link: https://pasteboard.co/J8Dp6yb5QyVr.png
 
 
 ### Facade Pattern
