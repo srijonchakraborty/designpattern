@@ -14,8 +14,8 @@ namespace MementoPattern.Contract
         StockRepository Repository { get; }
         StockMemento MementoHistory { get; }
         void AddStock(Stock stock);
-        void IncreaseStock(string stockId, int quantity);
-        void DecreaseStock(string stockId, int quantity);
+        void IncreaseStock(string stockId, double quantity);
+        void DecreaseStock(string stockId, double quantity);
         List<Stock> GetAllStocks();
         void UndoLastTransaction();
         void SaveMemento(Stock stock);

@@ -37,10 +37,9 @@ namespace MementoPattern.Implementation.StockMemento
             repository.AddStock(stock);
             stocks.Add(stock);
             SaveMemento(stock);
-            Console.WriteLine($"Added new Stock: {stock.Item?.ItemName}");
         }
 
-        public void DecreaseStock(string stockId, int quantity)
+        public void DecreaseStock(string stockId, double quantity)
         {
             var stock = repository.GetStock(stockId);
             if (stock == null)
@@ -65,7 +64,7 @@ namespace MementoPattern.Implementation.StockMemento
             return repository.GetAllStocks();
         }
 
-        public void IncreaseStock(string stockId, int quantity)
+        public void IncreaseStock(string stockId, double quantity)
         {
             var stock = repository.GetStock(stockId);
             if (stock == null)
