@@ -12,7 +12,7 @@ Welcome to the **Design Patterns Practice** repository! This repository serves a
   - [Proxy Pattern](#proxy-pattern)
   - [Template Method Pattern](#template-method-pattern)
   - [State Pattern](#state-pattern)  
-  - [Memento Pattern](#momento-pattern)
+  - [Memento Pattern](#memento-pattern)
   - [Prototype Pattern](#prototype-pattern)
   - [Facade Pattern](#facade-pattern)
 - [Getting Started](#getting-started)
