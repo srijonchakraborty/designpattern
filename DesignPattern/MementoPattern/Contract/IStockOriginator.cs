@@ -18,7 +18,7 @@ namespace MementoPattern.Contract
         void DecreaseStock(string stockId, int quantity);
         List<Stock> GetAllStocks();
         void UndoLastTransaction();
-        void SaveMemento();
+        void SaveMemento(Stock stock);
         bool CheckStockInconsistency();
     }
 }

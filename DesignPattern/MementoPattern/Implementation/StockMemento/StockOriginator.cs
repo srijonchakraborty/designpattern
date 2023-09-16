@@ -1,7 +1,9 @@
 ﻿using Common.DummyDataRepository;
 using Common.Model.Stock;
 using MementoPattern.Contract;
-using System;
+using PrototypePattern.Contract;
+using PrototypePattern.Implementation.Stock;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ namespace MementoPattern.Implementation.StockMemento
     public class StockOriginator : IStockOriginator
     {
         private readonly List<Stock> stocks = new List<Stock>();
+        private readonly IPrototype<Stock> tstocks = new StockPrototype();
         public StockOriginator()
         {
             repository = new StockRepository();//this will be injected and set here
@@ -33,15 +36,28 @@ namespace MementoPattern.Implementation.StockMemento
         {
             repository.AddStock(stock);
             stocks.Add(stock);
-            SaveMemento();
+            SaveMemento(stock);
             Console.WriteLine($"Added new Stock: {stock.Item?.ItemName}");
         }
 
-       
-
         public void DecreaseStock(string stockId, int quantity)
         {
-            throw new NotImplementedException();
+            var stock = repository.GetStock(stockId);
+            if (stock == null)
+            {
+                Console.WriteLine($"Error: Stock '{stockId}' not found.");
+                return;
+            }
+
+            if (stock.StockQuantity < quantity)
+            {
+                Console.WriteLine($"Error: Insufficient stock of {stock?.Item?.ItemName??""} for the requested quantity.");
+                return;
+            }
+
+            stock.StockQuantity -= quantity;
+            repository.UpdateStock(stock);
+            SaveMemento(stock);
         }
 
         public List<Stock> GetAllStocks()
@@ -60,25 +76,50 @@ namespace MementoPattern.Implementation.StockMemento
 
             stock.StockQuantity += quantity;
             repository.UpdateStock(stock);
-            SaveMemento();
+            SaveMemento(stock);
             Console.WriteLine($"Increased stock of {stockId} by {quantity} units.");
         }
         public bool CheckStockInconsistency()
         {
+            if (mementoHistory != null && mementoHistory.StockTransactionHistories != null)
+            {
+               return CheckStock(mementoHistory.StockTransactionHistories);
+            }   
             return false;
 
         }
-        public void SaveMemento()
+
+        private bool CheckStock(IReadOnlyList<StockTransactionHistory> stockTransactionHistories)
         {
-            //need prototype pattern to clone object of stock and set StockTransactionHistory
-            //Build new StockTransactionHistory
-            mementoHistory.SetStockTransactionHistory(new StockTransactionHistory());
-           
+            foreach (var history in stockTransactionHistories)
+            {
+                if (history.CurrentStockAtTheMoment.StockQuantity < 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void SaveMemento(Stock stock)
+        {
+            StockTransactionHistory history= PrepareStockTransactionHistory(stock);
+            mementoHistory.SetStockTransactionHistory(history);
+        }
+
+        private StockTransactionHistory PrepareStockTransactionHistory(Stock stock)
+        {
+            StockTransactionHistory result= new StockTransactionHistory();
+            result.CurrentStockAtTheMoment = tstocks?.DeepUsingJsonClone(stock) ?? new Stock();
+            result.CreateDate=DateTime.Now;
+            result.CreateDate = DateTime.Now;
+
+            return result;
         }
 
         public void UndoLastTransaction()
         {
-            throw new NotImplementedException();
+            mementoHistory.RemoveLastTransactionHistory();
         }
     }
 }

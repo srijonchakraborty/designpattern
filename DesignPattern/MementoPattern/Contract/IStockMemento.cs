@@ -13,5 +13,6 @@ namespace MementoPattern.Contract
         IReadOnlyList<StockTransactionHistory> StockTransactionHistories { get; }
         void SetStockTransactionHistory(StockTransactionHistory history);
         void RemoveStockTransactionHistory(List<StockTransactionHistory> histories);
+        void RemoveLastTransactionHistory();
     }
 }

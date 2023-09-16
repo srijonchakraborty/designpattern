@@ -43,5 +43,12 @@ namespace MementoPattern.Implementation.StockMemento
                 _stockTransactionHistories.Remove(history);
             }
         }
+        public void RemoveLastTransactionHistory()
+        {
+            if (_stockTransactionHistories != null && _stockTransactionHistories.Count>0)
+            {
+                _stockTransactionHistories.RemoveAt(_stockTransactionHistories.Count-1);
+            }
+        }
     }
 }
