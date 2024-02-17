@@ -91,9 +91,9 @@ namespace DesignPattern
             {
 
                 serviceProvider = new ServiceCollection()
-                .AddDbContext<SqlDbContext>(options =>
+                .AddDbContext<SqlServerDbContext>(options =>
                 {
-                    //options.  UseSqlServer(CustomConstant.CurrentAppSettings.SqlConnection.ConnectionString);
+                    options.UseSqlServer(CustomConstant.CurrentAppSettings.SqlConnection.ConnectionString);
                 })
                 .AddScoped(typeof(IRepository), typeof(SqlServerRepository))
                 .BuildServiceProvider();

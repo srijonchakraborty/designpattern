@@ -48,21 +48,22 @@ namespace DesignPattern
         }
     }
 
-    public class SqlDbContext : DbContext
+    public class SqlServerDbContext : DbContext
     {
-        public SqlDbContext(DbContextOptions<SqlDbContext> options)
-            : base(options)
+        public DbSet<SystemNotification> Notifications { get; set; }
+
+        public SqlServerDbContext(DbContextOptions<SqlServerDbContext> options) : base(options)
         {
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-           // optionsBuilder.UseSqlServer(@"Your conn string");
-        }
-        public DbSet<SystemNotification> SystemNotifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Configure your entity mappings here
+            modelBuilder.Entity<SystemNotification>().ToTable("Notification");
             modelBuilder.Entity<SystemNotification>().HasKey(n => n.NotificationId);
+            modelBuilder.Entity<SystemNotification>().Property(n => n.NotificationId).HasColumnName("NotificationId").ValueGeneratedOnAdd();
+
+            // Add any additional configurations for other entities
         }
     }
 }

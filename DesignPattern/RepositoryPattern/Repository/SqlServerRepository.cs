@@ -1,9 +1,12 @@
 ﻿using System.Linq.Expressions;
 using RepositoryPattern.Contract;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace RepositoryPattern.Repository
 {
+
+
     public class SqlServerRepository : IRepository
     {
         private readonly DbContext _dbContext;
