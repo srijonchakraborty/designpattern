@@ -5,6 +5,7 @@ using Common.Data;
 using Common.DTOs.Email;
 using Common.Mapper;
 using Common.Model;
+using Common.Model.Constants;
 using Common.Model.Order;
 using Common.Model.Weather;
 using DecoratorPattern.Contracts;
@@ -13,8 +14,13 @@ using DecoratorPattern.Decoretors.PurchaseOrderDecoretor;
 using DesignPattern.Order;
 using EmailService.Contracts;
 using EmailService.Services;
+using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using RabbitConsumerForNotification.Builder;
+using RepositoryPattern.Contract;
+using RepositoryPattern.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -30,6 +36,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+
             FacadePatternImplementationWithPrototypeAndMemento.FacadePatternImplementation();
             StatePatternApprovalImplementation.StatePatternImplementation();
             TempleteMethodPatternImplementation.TempleteMethodImplementation();
@@ -39,10 +46,27 @@ namespace DesignPattern
             Notification finalNotification = BuilderPatternImplementation();
             DecoratorImplementation.DecoratorPatternImplementation();
 
+            RepositoryPatternInvoke(finalNotification);
+
             Console.ReadLine();
             Console.ReadLine();
             Console.ReadLine();
         }
+
+        static void RepositoryPatternInvoke(Notification finalNotification)
+        {
+            AppSettingsBuilder.AppSettingsBuild();
+
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
+                .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
+                .AddScoped(typeof(IRepository), typeof(MongoDBRepository))
+                .BuildServiceProvider();
+
+            var repositoryPatternImplementation = ActivatorUtilities.CreateInstance<RepositoryPatternImplementation>(serviceProvider);
+            repositoryPatternImplementation.Save(finalNotification);
+        }
+
         private static void ProxyPattern()
         {
             VirtualProxyImplementation.VirtualProxyPatternImplementation();
