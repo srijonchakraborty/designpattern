@@ -45,4 +45,10 @@ namespace Common
         PO = 1,
         SPO = 2
     }
+    public enum DbTypeEnum : short
+    {
+        MongoDB = 1,
+        SqlServer = 2,
+        Postgre = 3
+    }
 }

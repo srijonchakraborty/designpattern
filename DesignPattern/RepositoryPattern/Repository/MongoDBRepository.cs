@@ -5,12 +5,12 @@ using RepositoryPattern.Contract;
 
 namespace RepositoryPattern.Repository
 {
-    public class MongoDBRepository : IRepository
+    public class MongoDbRepository : IRepository
     {
         public readonly static string IdConstantName = "Id";
         public readonly static string Id = "Id";
         private readonly IMongoDatabase _database;
-        public MongoDBRepository(IMongoDatabase database)
+        public MongoDbRepository(IMongoDatabase database)
         {
             _database = database;
         }

@@ -1,6 +1,7 @@
 ﻿using BuilderPattern.BuilderConcrete.NotificationBuilder;
 using BuilderPattern.BuilderDirectors;
 using BuilderPattern.BuilderInterface;
+using Common;
 using Common.Data;
 using Common.DTOs.Email;
 using Common.Mapper;
@@ -57,14 +58,32 @@ namespace DesignPattern
         {
             AppSettingsBuilder.AppSettingsBuild();
 
-            var serviceProvider = new ServiceCollection()
-                .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
-                .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
-                .AddScoped(typeof(IRepository), typeof(MongoDBRepository))
-                .BuildServiceProvider();
+            ServiceProvider serviceProvider = SetupDb(DbTypeEnum.MongoDB);
 
             var repositoryPatternImplementation = ActivatorUtilities.CreateInstance<RepositoryPatternImplementation>(serviceProvider);
             repositoryPatternImplementation.Save(finalNotification);
+        }
+
+        private static ServiceProvider SetupDb(DbTypeEnum dbTypeEnum)
+        {
+            ServiceProvider serviceProvider = null;
+            if (dbTypeEnum == DbTypeEnum.MongoDB)
+            {
+                serviceProvider= new ServiceCollection()
+                .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
+                .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
+                .AddScoped(typeof(IRepository), typeof(MongoDbRepository))
+                .BuildServiceProvider();
+            }
+            else if (dbTypeEnum == DbTypeEnum.SqlServer)
+            {
+                serviceProvider = new ServiceCollection()
+               .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
+               .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
+               .AddScoped(typeof(IRepository), typeof(MongoDbRepository))
+               .BuildServiceProvider();
+            }
+            return serviceProvider;
         }
 
         private static void ProxyPattern()
