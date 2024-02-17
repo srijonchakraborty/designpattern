@@ -16,11 +16,14 @@ using DesignPattern.Order;
 using EmailService.Contracts;
 using EmailService.Services;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PrototypePattern.Implementation;
 using RabbitConsumerForNotification.Builder;
 using RepositoryPattern.Contract;
+using RepositoryPattern.Models;
 using RepositoryPattern.Repository;
 using System;
 using System.Collections.Generic;
@@ -30,6 +33,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.EntityFrameworkCore;
 
 namespace DesignPattern
 {
@@ -58,10 +62,18 @@ namespace DesignPattern
         {
             AppSettingsBuilder.AppSettingsBuild();
 
-            ServiceProvider serviceProvider = SetupDb(DbTypeEnum.MongoDB);
+            ServiceProvider serviceProvider = SetupDb(DbTypeEnum.SqlServer);
 
             var repositoryPatternImplementation = ActivatorUtilities.CreateInstance<RepositoryPatternImplementation>(serviceProvider);
-            repositoryPatternImplementation.Save(finalNotification);
+
+            SystemNotification obj = new GenericPrototype<Notification, SystemNotification>().DeepUsingJsonClone(finalNotification);
+            obj.Id = ObjectId.GenerateNewId();
+            repositoryPatternImplementation.Save(obj);
+            string objectIdString = obj.Id.ToString();
+
+            // Convert the string to ObjectId
+            ObjectId objectId = ObjectId.Parse(objectIdString);
+            var ttt=repositoryPatternImplementation.GetNotification(objectIdString);
         }
 
         private static ServiceProvider SetupDb(DbTypeEnum dbTypeEnum)
@@ -77,11 +89,14 @@ namespace DesignPattern
             }
             else if (dbTypeEnum == DbTypeEnum.SqlServer)
             {
+
                 serviceProvider = new ServiceCollection()
-               .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
-               .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
-               .AddScoped(typeof(IRepository), typeof(MongoDbRepository))
-               .BuildServiceProvider();
+                .AddDbContext<SqlDbContext>(options =>
+                {
+                    //options.  UseSqlServer(CustomConstant.CurrentAppSettings.SqlConnection.ConnectionString);
+                })
+                .AddScoped(typeof(IRepository), typeof(SqlServerRepository))
+                .BuildServiceProvider();
             }
             return serviceProvider;
         }

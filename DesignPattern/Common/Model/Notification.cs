@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Common.Model
 {
     public class Notification
-    {
+    {       
         public string[] Emails { get; set; }
         public string[] CCEmails { get; set; }
         public string[] BCCEmails { get; set; }

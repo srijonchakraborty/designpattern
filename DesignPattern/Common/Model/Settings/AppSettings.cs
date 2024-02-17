@@ -9,17 +9,17 @@ namespace Common.Model
     #region AppSettings
     public class AppSettings
     {
-        public string[] CorsSetting { get; set; }
-        public MongoConnectionModel MongoConnection { get; set; }
-       
+        public string[] CorsSetting { get; set; }=new string[0];
+        public MongoConnectionModel MongoConnection { get; set; }=new MongoConnectionModel();
+        public SqlConnectionModel SqlConnection { get; set; } = new SqlConnectionModel();
+
     }
     #endregion
 
-
-    #region SignalRModel
-    public class SignalRModel
+    #region SqlConnectionModel
+    public class SqlConnectionModel : ConnectionStringModel
     {
-        public string SpecificNotificationReceiveMethod { get; set; }=string.Empty;
+        public string InstanceName { get; set; } = string.Empty;
     }
     #endregion
 
