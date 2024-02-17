@@ -1,5 +1,6 @@
 ﻿using System;
 using ProxyPattern.Contracts.RemoteProxy.WeatherProxy;
+using ProxyPattern.Implementation.RemoteProxy.WeatherProxy;
 
 namespace DesignPattern
 {

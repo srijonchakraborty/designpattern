@@ -1,5 +1,5 @@
-﻿using Common;
-using Common.DTOs.Phone;
+﻿using Common.DTOs.Phone;
+using Common.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

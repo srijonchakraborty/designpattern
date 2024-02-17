@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProxyPattern.Implementation.RemoteProxy.WeatherProxy;
 using Newtonsoft.Json.Linq;
+using ProxyPattern.Contracts.RemoteProxy.WeatherProxy;
 
-namespace ProxyPattern.Contracts.RemoteProxy.WeatherProxy
+namespace ProxyPattern.Implementation.RemoteProxy.WeatherProxy
 {
     public class WeatherRemoteProxy : IWeatherRemoteProxy
     {

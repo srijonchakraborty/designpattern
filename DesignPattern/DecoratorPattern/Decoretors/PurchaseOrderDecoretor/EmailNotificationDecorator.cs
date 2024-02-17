@@ -1,7 +1,8 @@
-﻿using BuilderPattern;
-using BuilderPattern.BuilderConcrete.NotificationBuilder;
-using Common;
+﻿using BuilderPattern.BuilderConcrete.NotificationBuilder;
+using BuilderPattern.BuilderDirectors;
+using BuilderPattern.BuilderInterface;
 using Common.DTOs.Email;
+using Common.Model;
 using Common.Model.Order;
 using DecoratorPattern.Contracts;
 using EmailService.Contracts;

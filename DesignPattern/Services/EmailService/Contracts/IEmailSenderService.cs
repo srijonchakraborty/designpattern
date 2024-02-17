@@ -1,5 +1,5 @@
-﻿using Common;
-using Common.DTOs.Email;
+﻿using Common.DTOs.Email;
+using Common.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

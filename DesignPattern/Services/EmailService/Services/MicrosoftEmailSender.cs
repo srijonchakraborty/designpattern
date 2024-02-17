@@ -1,8 +1,8 @@
-﻿using Common;
-using System.Net;
+﻿using System.Net;
 using System.Net.Mail;
 using Common.DTOs.Email;
 using EmailService.Contracts;
+using Common.Model;
 
 namespace EmailService.Services
 {

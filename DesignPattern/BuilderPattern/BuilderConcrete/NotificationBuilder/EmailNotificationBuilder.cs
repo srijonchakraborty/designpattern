@@ -1,5 +1,6 @@
-﻿using Common;
-
+﻿using BuilderPattern.BuilderInterface;
+using Common;
+using Common.Model;
 
 namespace BuilderPattern.BuilderConcrete.NotificationBuilder
 {
