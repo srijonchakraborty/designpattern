@@ -51,6 +51,11 @@ The Decorator pattern is a **structural pattern** that allows behavior to be add
 
 Check the Link: [Decorator Pattern](https://github.com/srijonchakraborty/designpattern/tree/main/DesignPattern/DecoratorPattern)
 
+Image Link: https://pasteboard.co/MbQQ86ZWy7QL.png
+
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/3d15f74c-a6a1-41f3-9699-007959c36d99)
+
+
 ### Proxy Pattern 
 
 As we know that, Proxy Pattern is one type of **structural design pattern** and in this Repository I have implemented 3 types of Proxy Pattern. 
