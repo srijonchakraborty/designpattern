@@ -1,6 +1,4 @@
 ﻿using BuilderPattern.BuilderConcrete.NotificationBuilder;
-using BuilderPattern;
-using Common;
 using Common.Contracts.Order;
 using Common.DTOs.Email;
 using Common.Model.Order;
@@ -12,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TempleteMethodPattern.Contracts.OrderProcess;
+using BuilderPattern.BuilderInterface;
+using Common.Model;
+using BuilderPattern.BuilderDirectors;
 
 namespace TempleteMethodPattern.Implementation.OrderProcess
 {

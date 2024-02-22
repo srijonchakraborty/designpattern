@@ -1,6 +1,6 @@
-﻿using Common;
+﻿using Common.Model;
 
-namespace BuilderPattern
+namespace BuilderPattern.BuilderInterface
 {
     public interface INotificationBuilder
     {

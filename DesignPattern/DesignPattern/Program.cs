@@ -1,9 +1,12 @@
-﻿using BuilderPattern;
-using BuilderPattern.BuilderConcrete.NotificationBuilder;
+﻿using BuilderPattern.BuilderConcrete.NotificationBuilder;
+using BuilderPattern.BuilderDirectors;
+using BuilderPattern.BuilderInterface;
 using Common;
 using Common.Data;
 using Common.DTOs.Email;
 using Common.Mapper;
+using Common.Model;
+using Common.Model.Constants;
 using Common.Model.Order;
 using Common.Model.Weather;
 using DecoratorPattern.Contracts;
@@ -12,8 +15,15 @@ using DecoratorPattern.Decoretors.PurchaseOrderDecoretor;
 using DesignPattern.Order;
 using EmailService.Contracts;
 using EmailService.Services;
+using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PrototypePattern.Implementation;
+using RabbitConsumerForNotification.Builder;
+using RepositoryPattern.Contract;
+using RepositoryPattern.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -22,6 +32,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.EntityFrameworkCore;
+//using Repository.Models;
+using DesignPattern.DBContext;
+using DesignPattern.DBContext.Builder;
+using DesignPattern.DBContext.Models.Models;
 
 namespace DesignPattern
 {
@@ -29,6 +44,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+
             FacadePatternImplementationWithPrototypeAndMemento.FacadePatternImplementation();
             StatePatternApprovalImplementation.StatePatternImplementation();
             TempleteMethodPatternImplementation.TempleteMethodImplementation();
@@ -38,10 +54,55 @@ namespace DesignPattern
             Notification finalNotification = BuilderPatternImplementation();
             DecoratorImplementation.DecoratorPatternImplementation();
 
+            RepositoryPatternInvoke(finalNotification);
+
             Console.ReadLine();
             Console.ReadLine();
             Console.ReadLine();
         }
+
+        static void RepositoryPatternInvoke(Notification finalNotification)
+        {
+            AppSettingsBuilder.AppSettingsBuild();
+
+            ServiceProvider serviceProvider = SetupDb();
+
+            var repositoryPatternImplementation = ActivatorUtilities.CreateInstance<RepositoryPatternImplementation>(serviceProvider);
+
+
+            SystemNotification obj = finalNotification.ToSystemNotification();
+            var savedObject = repositoryPatternImplementation.Save(obj).Result;
+#if SQLSERVER
+            string id=savedObject.NotificationId.ToString();
+#elif MONGODB
+            string id = savedObject.Id.ToString();
+#endif
+            var ttt = repositoryPatternImplementation.GetNotification(id).Result;
+        }
+
+        private static ServiceProvider SetupDb()
+        {
+            ServiceProvider serviceProvider = null;
+#if SQLSERVER
+            serviceProvider = new ServiceCollection()
+            .AddDbContext<DesignPattern.DBContext.SQLServer.SqlServerDbContext>(options =>
+            {
+                options.UseSqlServer(CustomConstant.CurrentAppSettings.SqlConnection.ConnectionString);
+            })
+            .AddScoped(typeof(IRepository), typeof(SqlServerRepository<DesignPattern.DBContext.SQLServer.SqlServerDbContext>))
+            .BuildServiceProvider();
+#elif MONGODB
+
+            serviceProvider = new ServiceCollection()
+            .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
+            .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
+            .AddScoped(typeof(IRepository), typeof(MongoDbRepository))
+            .BuildServiceProvider();
+               
+#endif
+            return serviceProvider;
+        }
+
         private static void ProxyPattern()
         {
             VirtualProxyImplementation.VirtualProxyPatternImplementation();
@@ -79,7 +140,7 @@ namespace DesignPattern
 
             notificationDirector.BuildNotification(myNT, notificationInfo);
 
-            Notification finalMobileNotification  = myNT.GetNotification();
+            Notification finalMobileNotification = myNT.GetNotification();
             Console.WriteLine(finalMobileNotification.ToString());
             //You can console log here "finalNotification" Test 
 
@@ -93,5 +154,5 @@ namespace DesignPattern
             orderReportStrategyImplementation.GenerateAllInOneReport();
         }
     }
-  
+
 }

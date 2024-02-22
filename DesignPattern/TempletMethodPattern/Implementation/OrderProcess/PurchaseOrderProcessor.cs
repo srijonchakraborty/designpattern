@@ -1,6 +1,4 @@
 ﻿using BuilderPattern.BuilderConcrete.NotificationBuilder;
-using BuilderPattern;
-using Common;
 using Common.Contracts.Order;
 using Common.Model.Order;
 using PhoneService.Contracts;
@@ -14,6 +12,9 @@ using TempleteMethodPattern.Contracts.OrderProcess;
 using EmailService.Contracts;
 using EmailService.Services;
 using Common.DTOs.Email;
+using BuilderPattern.BuilderInterface;
+using Common.Model;
+using BuilderPattern.BuilderDirectors;
 
 namespace TempleteMethodPattern.Implementation.OrderProcess
 {
