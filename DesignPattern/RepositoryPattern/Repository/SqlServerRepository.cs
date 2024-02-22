@@ -5,13 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace RepositoryPattern.Repository
 {
-
-
-    public class SqlServerRepository : IRepository
+    public class SqlServerRepository<TDbContext> : IRepository where TDbContext : DbContext
     {
-        private readonly DbContext _dbContext;
+        private readonly TDbContext _dbContext;
 
-        public SqlServerRepository(DbContext dbContext)
+        public SqlServerRepository(TDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -50,8 +48,8 @@ namespace RepositoryPattern.Repository
 
         public async Task<T> AddAsync<T>(T entity) where T : class
         {
-            await _dbContext.Set<T>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            _dbContext.Set<T>().Add(entity);
+            _dbContext.SaveChanges();
             return entity;
         }
 

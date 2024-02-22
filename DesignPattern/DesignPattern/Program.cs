@@ -23,7 +23,6 @@ using Newtonsoft.Json.Linq;
 using PrototypePattern.Implementation;
 using RabbitConsumerForNotification.Builder;
 using RepositoryPattern.Contract;
-using RepositoryPattern.Models;
 using RepositoryPattern.Repository;
 using System;
 using System.Collections.Generic;
@@ -34,6 +33,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.EntityFrameworkCore;
+//using Repository.Models;
+using DesignPattern.DBContext;
+using DesignPattern.DBContext.Builder;
+using DesignPattern.DBContext.Models.Models;
 
 namespace DesignPattern
 {
@@ -62,42 +65,41 @@ namespace DesignPattern
         {
             AppSettingsBuilder.AppSettingsBuild();
 
-            ServiceProvider serviceProvider = SetupDb(DbTypeEnum.SqlServer);
+            ServiceProvider serviceProvider = SetupDb();
 
             var repositoryPatternImplementation = ActivatorUtilities.CreateInstance<RepositoryPatternImplementation>(serviceProvider);
 
-            SystemNotification obj = new GenericPrototype<Notification, SystemNotification>().DeepUsingJsonClone(finalNotification);
-            obj.Id = ObjectId.GenerateNewId();
-            repositoryPatternImplementation.Save(obj);
-            string objectIdString = obj.Id.ToString();
 
-            // Convert the string to ObjectId
-            ObjectId objectId = ObjectId.Parse(objectIdString);
-            var ttt=repositoryPatternImplementation.GetNotification(objectIdString);
+            SystemNotification obj = finalNotification.ToSystemNotification();
+            var savedObject = repositoryPatternImplementation.Save(obj).Result;
+#if SQLSERVER
+            string id=savedObject.NotificationId.ToString();
+#elif MONGODB
+            string id = savedObject.Id.ToString();
+#endif
+            var ttt = repositoryPatternImplementation.GetNotification(id).Result;
         }
 
-        private static ServiceProvider SetupDb(DbTypeEnum dbTypeEnum)
+        private static ServiceProvider SetupDb()
         {
             ServiceProvider serviceProvider = null;
-            if (dbTypeEnum == DbTypeEnum.MongoDB)
+#if SQLSERVER
+            serviceProvider = new ServiceCollection()
+            .AddDbContext<DesignPattern.DBContext.SQLServer.SqlServerDbContext>(options =>
             {
-                serviceProvider= new ServiceCollection()
-                .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
-                .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
-                .AddScoped(typeof(IRepository), typeof(MongoDbRepository))
-                .BuildServiceProvider();
-            }
-            else if (dbTypeEnum == DbTypeEnum.SqlServer)
-            {
+                options.UseSqlServer(CustomConstant.CurrentAppSettings.SqlConnection.ConnectionString);
+            })
+            .AddScoped(typeof(IRepository), typeof(SqlServerRepository<DesignPattern.DBContext.SQLServer.SqlServerDbContext>))
+            .BuildServiceProvider();
+#elif MONGODB
 
-                serviceProvider = new ServiceCollection()
-                .AddDbContext<SqlServerDbContext>(options =>
-                {
-                    options.UseSqlServer(CustomConstant.CurrentAppSettings.SqlConnection.ConnectionString);
-                })
-                .AddScoped(typeof(IRepository), typeof(SqlServerRepository))
-                .BuildServiceProvider();
-            }
+            serviceProvider = new ServiceCollection()
+            .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
+            .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
+            .AddScoped(typeof(IRepository), typeof(MongoDbRepository))
+            .BuildServiceProvider();
+               
+#endif
             return serviceProvider;
         }
 
@@ -138,7 +140,7 @@ namespace DesignPattern
 
             notificationDirector.BuildNotification(myNT, notificationInfo);
 
-            Notification finalMobileNotification  = myNT.GetNotification();
+            Notification finalMobileNotification = myNT.GetNotification();
             Console.WriteLine(finalMobileNotification.ToString());
             //You can console log here "finalNotification" Test 
 
@@ -152,5 +154,5 @@ namespace DesignPattern
             orderReportStrategyImplementation.GenerateAllInOneReport();
         }
     }
-  
+
 }

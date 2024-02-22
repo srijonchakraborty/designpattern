@@ -1,11 +1,12 @@
 ﻿using Common.Model;
 using Common.Model.Order;
+using DesignPattern.DBContext.Models.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
 using MongoDB.Driver;
+//using Repository.Models;
 using RepositoryPattern.Contract;
-using RepositoryPattern.Models;
 using RepositoryPattern.Repository;
 using System;
 using System.Collections.Generic;
@@ -19,51 +20,33 @@ namespace DesignPattern
 
     public class RepositoryPatternImplementation
     {
-
-
         private readonly IRepository _repository;
         public RepositoryPatternImplementation(IRepository repository) 
         {
             _repository = repository;
         }
-        public async Task Save<T>(T obj) where T : class
+        public async Task<T> Save<T>(T obj) where T : class
         {
-            await _repository.AddAsync(obj);
-           
+            return await _repository.AddAsync(obj);
         }
-        public SystemNotification GetNotification(string obj)
+        public async Task<SystemNotification> GetNotification(string id)
         {
-            //var item = await _repository.GetByIdAsync<SystemNotification>(obj);
-            //Console.WriteLine(item.Id);
-            //Console.WriteLine(item.Emails.Length);
             
-            //Console.WriteLine("----Using find-----");
-            
-            var items = _repository.Find<SystemNotification>(c=>c.Id==ObjectId.Parse(obj));
-            var final = items.ToList();
-            Console.WriteLine(final.Count);
-            Console.WriteLine(final[0].Emails.Length);
-            Console.WriteLine(final[0].Id);
-            return final[0];
+#if SQLSERVER
+            SystemNotification systemNotification = _repository.FindAsync<SystemNotification>(c => c.NotificationId == int.Parse(id)).Result?.FirstOrDefault();
+#elif MONGODB
+            SystemNotification systemNotification=  _repository.FindAsync<SystemNotification>(c=>c.Id==ObjectId.Parse(id)).Result?.FirstOrDefault();
+#endif
+            if (systemNotification != null)
+            {
+                Console.WriteLine(systemNotification.NotificationId);
+                Console.WriteLine(systemNotification.Id);
+                Console.WriteLine(systemNotification.Emails);
+                Console.WriteLine(systemNotification.Bccemails);
+            }
+            return systemNotification;
         }
     }
 
-    public class SqlServerDbContext : DbContext
-    {
-        public DbSet<SystemNotification> Notifications { get; set; }
-
-        public SqlServerDbContext(DbContextOptions<SqlServerDbContext> options) : base(options)
-        {
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // Configure your entity mappings here
-            modelBuilder.Entity<SystemNotification>().ToTable("Notification");
-            modelBuilder.Entity<SystemNotification>().HasKey(n => n.NotificationId);
-            modelBuilder.Entity<SystemNotification>().Property(n => n.NotificationId).HasColumnName("NotificationId").ValueGeneratedOnAdd();
-
-            // Add any additional configurations for other entities
-        }
-    }
+   
 }

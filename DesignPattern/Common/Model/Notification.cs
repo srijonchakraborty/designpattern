@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace Common.Model
 {
     public class Notification
-    {       
+    {
         public string[] Emails { get; set; }
         public string[] CCEmails { get; set; }
         public string[] BCCEmails { get; set; }
