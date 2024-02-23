@@ -16,5 +16,6 @@ namespace RepositoryPattern.Contract
         Task RemoveAsync<T>(T entity) where T : class;
         Task AddRangeAsync<T>(IEnumerable<T> entities) where T : class;
         Task RemoveRangeAsync<T>(IEnumerable<T> entities) where T : class;
+        Task SaveChangesAsync();
     }
 }

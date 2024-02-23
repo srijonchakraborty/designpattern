@@ -37,6 +37,8 @@ using Microsoft.EntityFrameworkCore;
 using DesignPattern.DBContext;
 using DesignPattern.DBContext.Builder;
 using DesignPattern.DBContext.Models.Models;
+using RepositoryPattern.Factory;
+using RepositoryPattern.UnitOfWork;
 
 namespace DesignPattern
 {
@@ -68,10 +70,11 @@ namespace DesignPattern
             ServiceProvider serviceProvider = SetupDb();
 
             var repositoryPatternImplementation = ActivatorUtilities.CreateInstance<RepositoryPatternImplementation>(serviceProvider);
-
-
+           
             SystemNotification obj = finalNotification.ToSystemNotification();
-            var savedObject = repositoryPatternImplementation.Save(obj).Result;
+            //var savedObject = repositoryPatternImplementation.Save(obj).Result;
+            var savedObject = repositoryPatternImplementation.SaveUsingUnitOfWork(obj).Result;
+
 #if SQLSERVER
             string id=savedObject.NotificationId.ToString();
 #elif MONGODB
@@ -90,6 +93,8 @@ namespace DesignPattern
                 options.UseSqlServer(CustomConstant.CurrentAppSettings.SqlConnection.ConnectionString);
             })
             .AddScoped(typeof(IRepository), typeof(SqlServerRepository<DesignPattern.DBContext.SQLServer.SqlServerDbContext>))
+            .AddScoped<IUnitOfWork, SqlServerUnitOfWork<DesignPattern.DBContext.SQLServer.SqlServerDbContext>>()
+            .AddScoped<IUnitOfWorkFactory, SqlServerUnitOfWorkFactory<DesignPattern.DBContext.SQLServer.SqlServerDbContext>>()
             .BuildServiceProvider();
 #elif MONGODB
 

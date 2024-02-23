@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
 using MongoDB.Driver;
-//using Repository.Models;
 using RepositoryPattern.Contract;
 using RepositoryPattern.Repository;
 using System;
@@ -16,20 +15,52 @@ using System.Threading.Tasks;
 
 namespace DesignPattern
 {
-
-
     public class RepositoryPatternImplementation
     {
         private readonly IRepository _repository;
-        public RepositoryPatternImplementation(IRepository repository) 
+        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
+        public RepositoryPatternImplementation(IRepository repository, IUnitOfWorkFactory unitOfWorkFactory) 
         {
             _repository = repository;
+            _unitOfWorkFactory= unitOfWorkFactory;
         }
         public async Task<T> Save<T>(T obj) where T : class
         {
-            return await _repository.AddAsync(obj);
+            var result= await _repository.AddAsync(obj);
+            await _repository.SaveChangesAsync();
+            return result;
         }
-        public async Task<SystemNotification> GetNotification(string id)
+        public async Task<T> SaveUsingUnitOfWork<T>(T obj) where T : class
+        {
+            T result = null;
+            using (var unitOfWork = _unitOfWorkFactory.Create())
+            {
+                try
+                {
+                    await unitOfWork.ExecuteInTransactionAsync(async () =>
+                    {
+                        result = await _repository.AddAsync(obj);
+                        await unitOfWork.SaveChangesAsync();
+                        if (result is SystemNotification)
+                        {
+                            var tempRes = result as SystemNotification;
+                            if (tempRes != null && (tempRes.NotificationId % 2) == 0)
+                            {
+                                throw new Exception("Hululu");
+                            }
+                        }
+                        return true;
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error occurred: {ex.Message}");
+                }
+            }
+            return result;
+        }
+
+public async Task<SystemNotification> GetNotification(string id)
         {
             
 #if SQLSERVER

@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using System.Linq.Expressions;
 using RepositoryPattern.Contract;
+using Microsoft.EntityFrameworkCore;
 
 namespace RepositoryPattern.Repository
 {
@@ -14,7 +15,10 @@ namespace RepositoryPattern.Repository
         {
             _database = database;
         }
-
+        public async Task SaveChangesAsync()
+        {
+            await Task.CompletedTask;
+        }
         public async Task<T?> GetByIdAsync<T>(string id) where T : class
         {
             var collection = _database.GetCollection<T>(typeof(T).Name);

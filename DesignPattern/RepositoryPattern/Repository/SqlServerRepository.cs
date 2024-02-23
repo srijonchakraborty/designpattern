@@ -13,7 +13,10 @@ namespace RepositoryPattern.Repository
         {
             _dbContext = dbContext;
         }
-
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
+        }
         public async Task<T?> GetByIdAsync<T>(string id) where T : class
         {
             return await _dbContext.Set<T>().FindAsync(id);
@@ -49,14 +52,12 @@ namespace RepositoryPattern.Repository
         public async Task<T> AddAsync<T>(T entity) where T : class
         {
             _dbContext.Set<T>().Add(entity);
-            _dbContext.SaveChanges();
             return entity;
         }
 
         public async Task<T> DeleteAsync<T>(T entity) where T : class
         {
             _dbContext.Set<T>().Remove(entity);
-            await _dbContext.SaveChangesAsync();
             return entity;
         }
 
@@ -72,25 +73,21 @@ namespace RepositoryPattern.Repository
         public async Task AddRangeAsync<T>(IEnumerable<T> entities) where T : class
         {
             await _dbContext.Set<T>().AddRangeAsync(entities);
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task RemoveAsync<T>(T entity) where T : class
         {
             _dbContext.Set<T>().Remove(entity);
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task RemoveRangeAsync<T>(IEnumerable<T> entities) where T : class
         {
             _dbContext.Set<T>().RemoveRange(entities);
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<T> UpdateAsync<T>(T entity) where T : class
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
             return entity;
         }
     }
