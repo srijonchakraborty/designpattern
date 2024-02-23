@@ -3,17 +3,21 @@ using MongoDB.Driver;
 using System.Linq.Expressions;
 using RepositoryPattern.Contract;
 using Microsoft.EntityFrameworkCore;
+using RepositoryPattern.UnitOfWork;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace RepositoryPattern.Repository
 {
-    public class MongoDbRepository : IRepository
+    public class MongoDbRepository : IRepository 
     {
         //public readonly static string IdConstantName = "Id";
         public readonly static string Id = "Id";
         private readonly IMongoDatabase _database;
-        public MongoDbRepository(IMongoDatabase database)
+        private readonly IMongoSessionContext _sessionContext;
+        public MongoDbRepository(IMongoDatabase database, IMongoSessionContext sessionContext)
         {
             _database = database;
+            _sessionContext = sessionContext;
         }
         public async Task SaveChangesAsync()
         {
@@ -49,10 +53,10 @@ namespace RepositoryPattern.Repository
         public async Task<T> AddAsync<T>(T entity) where T : class
         {
             var collection = _database.GetCollection<T>(typeof(T).Name);
-            await collection.InsertOneAsync(entity);
+            await collection.InsertOneAsync(_sessionContext.GetCurrentSession(),entity); 
+            
             return entity;
         }
-
         public async Task<T> UpdateAsync<T>(T entity) where T : class
         {
             var collection = _database.GetCollection<T>(typeof(T).Name);
@@ -71,9 +75,6 @@ namespace RepositoryPattern.Repository
 
         public async Task<IEnumerable<T>> FindAsync<T>(Expression<Func<T, bool>> predicate) where T : class
         {
-            //var collection = _database.GetCollection<T>(typeof(T).Name);
-            //return await collection.Find(predicate).ToListAsync();
-
             try
             {
                 var collection = _database.GetCollection<T>(typeof(T).Name);
@@ -121,5 +122,15 @@ namespace RepositoryPattern.Repository
             var filter = Builders<T>.Filter.In("Id", ids);
             await collection.DeleteManyAsync(filter);
         }
+
+        //private IClientSessionHandle GetSession()
+        //{
+        //    var mongoUnitOfWork = _unitOfWork as MongoDBUnitOfWork;
+        //    if (mongoUnitOfWork != null)
+        //    {
+        //        return mongoUnitOfWork.Session;
+        //    }
+        //    return null;
+        //}
     }
 }
