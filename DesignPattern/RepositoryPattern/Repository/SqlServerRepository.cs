@@ -13,7 +13,10 @@ namespace RepositoryPattern.Repository
         {
             _dbContext = dbContext;
         }
-
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
+        }
         public async Task<T?> GetByIdAsync<T>(string id) where T : class
         {
             return await _dbContext.Set<T>().FindAsync(id);
