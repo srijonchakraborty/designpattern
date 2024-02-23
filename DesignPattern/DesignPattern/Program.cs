@@ -72,7 +72,6 @@ namespace DesignPattern
             var repositoryPatternImplementation = ActivatorUtilities.CreateInstance<RepositoryPatternImplementation>(serviceProvider);
            
             SystemNotification obj = finalNotification.ToSystemNotification();
-            //var savedObject = repositoryPatternImplementation.Save(obj).Result;
             var savedObject = repositoryPatternImplementation.SaveUsingUnitOfWork(obj).Result;
 
 #if SQLSERVER

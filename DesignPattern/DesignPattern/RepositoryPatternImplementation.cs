@@ -44,6 +44,8 @@ namespace DesignPattern
                         if (result is SystemNotification)
                         {
                             var tempRes = result as SystemNotification;
+                            //This is just a dummy logic to check automatic rollback 
+                            //Check the SQL Server Data Using SELECT * FROM SystemNotification WITH (NOLOCK) Query
                             if (tempRes != null && (tempRes.NotificationId % 2) == 0)
                             {
                                 throw new Exception("Hululu");
