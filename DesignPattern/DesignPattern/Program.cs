@@ -62,6 +62,51 @@ namespace DesignPattern
             Console.ReadLine();
             Console.ReadLine();
         }
+
+        static void RepositoryPatternInvoke(Notification finalNotification)
+        {
+            AppSettingsBuilder.AppSettingsBuild();
+
+            ServiceProvider serviceProvider = SetupDb();
+
+            var repositoryPatternImplementation = ActivatorUtilities.CreateInstance<RepositoryPatternImplementation>(serviceProvider);
+
+            SystemNotification obj = finalNotification.ToSystemNotification();
+            var savedObject = repositoryPatternImplementation.SaveUsingUnitOfWork(obj).Result;
+
+#if SQLSERVER
+            string id = savedObject.NotificationId.ToString();
+#elif MONGODB
+            string id = savedObject.Id.ToString();
+#endif
+            var ttt = repositoryPatternImplementation.GetNotification(id).Result;
+        }
+
+        private static ServiceProvider SetupDb()
+        {
+            ServiceProvider serviceProvider = null;
+#if SQLSERVER
+            serviceProvider = new ServiceCollection()
+            .AddDbContext<DesignPattern.DBContext.SQLServer.SqlServerDbContext>(options =>
+            {
+                options.UseSqlServer(CustomConstant.CurrentAppSettings.SqlConnection.ConnectionString);
+            })
+            .AddScoped(typeof(IRepository), typeof(SqlServerRepository<DesignPattern.DBContext.SQLServer.SqlServerDbContext>))
+            .AddScoped<IUnitOfWork, SqlServerUnitOfWork<DesignPattern.DBContext.SQLServer.SqlServerDbContext>>()
+            .AddScoped<IUnitOfWorkFactory, SqlServerUnitOfWorkFactory<DesignPattern.DBContext.SQLServer.SqlServerDbContext>>()
+            .BuildServiceProvider();
+#elif MONGODB
+
+            serviceProvider = new ServiceCollection()
+            .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
+            .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
+            .AddScoped(typeof(IRepository), typeof(MongoDbRepository))
+            .BuildServiceProvider();
+               
+#endif
+            return serviceProvider;
+        }
+
         private static void ProxyPattern()
         {
             VirtualProxyImplementation.VirtualProxyPatternImplementation();
