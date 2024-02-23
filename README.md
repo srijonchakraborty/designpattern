@@ -165,6 +165,9 @@ The Facade pattern is a **structural design pattern** in software engineering th
 
 ![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/e5480ec2-1360-4049-85b1-ef5d1e32c33a)
 
+SQL Server Schema :
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/5b2dbbff-9a0b-4f7d-ba17-ba17f55a286e)
+
 Check Link: https://pasteboard.co/rj1wTe9r5WQh.png
 
 ## Getting Started
