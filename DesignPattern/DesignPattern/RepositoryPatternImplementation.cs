@@ -43,16 +43,25 @@ namespace DesignPattern
                     await unitOfWork.ExecuteInTransactionAsync(async () =>
                     {
                         result = await _repository.AddAsync(obj);
+#if SQLSERVER
                         await unitOfWork.SaveChangesAsync();
+#endif
                         if (result is SystemNotification)
                         {
                             var tempRes = result as SystemNotification;
                             //This is just a dummy logic to check automatic rollback 
                             //Check the SQL Server Data Using SELECT * FROM SystemNotification WITH (NOLOCK) Query
+#if SQLSERVER
                             if (tempRes != null && (tempRes.NotificationId % 2) == 0)
                             {
                                 throw new Exception("Hululu");
                             }
+#elif MONGODB
+                            if (tempRes != null && (SumDigits(tempRes.Id.ToString()) % 2) == 0)
+                            {
+                                throw new Exception("Hululu Mongo");
+                            }
+#endif
                         }
                         return true;
                     });
@@ -65,7 +74,20 @@ namespace DesignPattern
             return result;
         }
 
-public async Task<SystemNotification> GetNotification(string id)
+        static int SumDigits(string input)
+        {
+            int sum = 0;
+            foreach (char c in input)
+            {
+                if (char.IsDigit(c))
+                {
+                    sum += int.Parse(c.ToString());
+                }
+            }
+            return sum;
+        }
+
+        public async Task<SystemNotification> GetNotification(string id)
         {
             
 #if SQLSERVER

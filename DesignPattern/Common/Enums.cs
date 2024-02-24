@@ -51,4 +51,11 @@ namespace Common
         SqlServer = 2,
         Postgre = 3
     }
+    public enum PaymentType : short
+    {
+        Paypal = 1,
+        CreditCard = 2,
+        Bkash = 3
+    }
+    
 }

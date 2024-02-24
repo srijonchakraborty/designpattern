@@ -39,6 +39,8 @@ using DesignPattern.DBContext.Builder;
 using DesignPattern.DBContext.Models.Models;
 using RepositoryPattern.Factory;
 using RepositoryPattern.UnitOfWork;
+using RepositoryPattern.UnitOfWorkFactory;
+using RepositoryPattern.Context;
 
 namespace DesignPattern
 {
@@ -46,6 +48,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+            FactoryPatternImplementation.SimpleFactoryPatternImplementation();
 
             FacadePatternImplementationWithPrototypeAndMemento.FacadePatternImplementation();
             StatePatternApprovalImplementation.StatePatternImplementation();
@@ -72,11 +75,13 @@ namespace DesignPattern
             var repositoryPatternImplementation = ActivatorUtilities.CreateInstance<RepositoryPatternImplementation>(serviceProvider);
 
             SystemNotification obj = finalNotification.ToSystemNotification();
+            obj.Id = ObjectId.Parse("65d878f775408fbf61e6c11d");
             var savedObject = repositoryPatternImplementation.SaveUsingUnitOfWork(obj).Result;
 
 #if SQLSERVER
             string id = savedObject.NotificationId.ToString();
 #elif MONGODB
+           
             string id = savedObject.Id.ToString();
 #endif
             var ttt = repositoryPatternImplementation.GetNotification(id).Result;
@@ -99,7 +104,10 @@ namespace DesignPattern
 
             serviceProvider = new ServiceCollection()
             .AddSingleton<IMongoClient>(s => new MongoClient(CustomConstant.CurrentAppSettings.MongoConnection.ConnectionString))
+            .AddScoped<IMongoSessionContext, MongoSessionContext>()
             .AddSingleton(s => s.GetService<IMongoClient>().GetDatabase(CustomConstant.CurrentAppSettings.MongoConnection.InstanceName))
+            .AddScoped<IUnitOfWork, MongoDBUnitOfWork>()
+            .AddScoped<IUnitOfWorkFactory, MongoUnitOfWorkFactory>()
             .AddScoped(typeof(IRepository), typeof(MongoDbRepository))
             .BuildServiceProvider();
                
