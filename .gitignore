@@ -40,3 +40,5 @@
 /DesignPattern/FacadePattern/obj
 /DesignPattern/RepositoryPattern/obj
 /DesignPattern/RepositoryPattern/bin/Debug/net7.0
+/DesignPattern/FactoryPattern/bin/Debug/net7.0
+/DesignPattern/FactoryPattern/obj
