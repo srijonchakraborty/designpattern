@@ -175,8 +175,13 @@ The Repository pattern is primarily considered a structural design pattern. We c
 Check Link: https://pasteboard.co/rj1wTe9r5WQh.png
 
 ### Factory Pattern
+The Factory Pattern is a creational design pattern. This Pattern is a design pattern used for creating objects. It provides an interface or abstract class for creating objects, but the actual creation is deferred to subclasses. 
+There are different variations of the Factory Pattern => Simple Factory, Factory Method, Abstract Factory
 
 #### Simple Factory
+The Simple Factory pattern provides a basic mechanism for object creation, but it has several shortcomings that can lead to code maintenance issues, decreased flexibility, and decreased extensibility over time. Most developers do not consider it a design pattern because it violates the open-close principle of software design. According to this principle, classes should be open for extension but closed for modification. The Simple Factory pattern relies on switch-case or if-else statements, which are not flexible.
+
+![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/2dac4e3c-58b4-4595-8e25-62e81d3c30e8)
 
 #### Factory Method
 
