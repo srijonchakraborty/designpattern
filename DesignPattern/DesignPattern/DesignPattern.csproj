@@ -22,6 +22,7 @@
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\DecoratorPattern\DecoratorPattern.csproj" />
     <ProjectReference Include="..\FacadePattern\FacadePattern.csproj" />
+    <ProjectReference Include="..\FactoryPattern\FactoryPattern.csproj" />
     <ProjectReference Include="..\ProxyPattern\ProxyPattern.csproj" />
     <ProjectReference Include="..\RepositoryPattern\RepositoryPattern.csproj" />
     <ProjectReference Include="..\Services\EmailService\EmailService.csproj" />
