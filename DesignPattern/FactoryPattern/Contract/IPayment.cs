@@ -1,6 +1,6 @@
 ﻿using Common.Model.Payment;
 
-namespace FactoryPattern.SimpleFactory.Contract
+namespace FactoryPattern.Contract
 {
     public interface IPayment
     {

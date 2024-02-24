@@ -1,7 +1,7 @@
 ﻿using Common.Model.Payment;
-using FactoryPattern.SimpleFactory.Contract;
+using FactoryPattern.Contract;
 
-namespace FactoryPattern.SimpleFactory.Implementation
+namespace FactoryPattern.Implementation
 {
     public class BkashPayment : IPayment
     {

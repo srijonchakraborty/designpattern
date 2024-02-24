@@ -1,7 +1,7 @@
 ﻿using Common.Model.Payment;
-using FactoryPattern.SimpleFactory.Contract;
 using FactoryPattern.SimpleFactory;
 using Common;
+using FactoryPattern.Contract;
 
 namespace DesignPattern
 {

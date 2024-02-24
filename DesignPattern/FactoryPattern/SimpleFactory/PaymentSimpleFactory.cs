@@ -1,6 +1,6 @@
 ﻿using Common;
-using FactoryPattern.SimpleFactory.Contract;
-using FactoryPattern.SimpleFactory.Implementation;
+using FactoryPattern.Contract;
+using FactoryPattern.Implementation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
