@@ -1,4 +1,5 @@
-﻿using Common.Model.Payment;
+﻿using Common;
+using Common.Model.Payment;
 using FactoryPattern.Contract;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace FactoryPattern.Implementation
 {
     public class CreditCardPayment : IPayment
     {
+        public PaymentType PaymentType { get; set; } 
         public void ProcessPayment(PaymentData paymentData)
         {
             if (paymentData is CreditCardPaymentData)

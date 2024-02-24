@@ -48,6 +48,7 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
+            FactoryPatternImplementation.FactoryMethodPatternImplementation();
             FactoryPatternImplementation.SimpleFactoryPatternImplementation();
 
             FacadePatternImplementationWithPrototypeAndMemento.FacadePatternImplementation();

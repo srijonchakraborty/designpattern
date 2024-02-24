@@ -1,10 +1,12 @@
-﻿using Common.Model.Payment;
+﻿using Common;
+using Common.Model.Payment;
 using FactoryPattern.Contract;
 
 namespace FactoryPattern.Implementation
 {
     public class PayPalPayment : IPayment
     {
+        public PaymentType PaymentType { get; set; }
         public void ProcessPayment(PaymentData paymentData)
         {
             if (paymentData is PayPalPaymentData)
