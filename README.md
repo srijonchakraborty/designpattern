@@ -107,7 +107,7 @@ Check Image Link 2 : https://paste.pics/23743bb5c89ce9ec86454d7a83018b2f
 Check Link: [Template Method Pattern](https://github.com/srijonchakraborty/designpattern/tree/main/DesignPattern/TempletMethodPattern)
 
 ### State Pattern
-The state pattern is a behavioral design pattern that allows an object to alter its behavior when its internal state changes. It achieves this by representing each possible state of an object as a separate class and delegating the state-specific behavior to these classes. This pattern promotes cleaner, more modular code by separating the responsibilities related to an object's state into distinct classes.
+The state pattern is a **behavioral design pattern** that allows an object to alter its behavior when its internal state changes. It achieves this by representing each possible state of an object as a separate class and delegating the state-specific behavior to these classes. This pattern promotes cleaner, more modular code by separating the responsibilities related to an object's state into distinct classes.
 
 ![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/9f0ba8d0-6648-4ee2-82f7-8f38d3a75e4b)
 
@@ -163,7 +163,7 @@ The Facade pattern is a **structural design pattern** in software engineering th
 ### Repository Pattern
 #### (With Unit of Work)
 
-The Repository pattern is primarily considered a structural design pattern. We can say that a Repository Design Pattern acts as a middleman or middle layer between the rest of the application and the data access logic. That means a repository pattern isolates all the data access code from the rest of the application. The advantage of doing so is that, if you need to do any changes then you need to do it in one place. Another benefit is that testing your controllers or client code becomes easy because the testing framework need not run against the actual database access code. In this project, I have implemented the Repository Pattern for SQL Server and MongoDB. It is also possible to implement it for other databases such as MySQL and PostgreSQL. Additionally, I have implemented the Unit of Work to ensure that transactions adhere to the ACID (Atomicity, Consistency, Isolation, and Durability) properties of the database. However, the Unit of Work should be implemented separately for each type of database.
+The Repository pattern is primarily considered a **structural** design pattern. We can say that a Repository Design Pattern acts as a middleman or middle layer between the rest of the application and the data access logic. That means a repository pattern isolates all the data access code from the rest of the application. The advantage of doing so is that, if you need to do any changes then you need to do it in one place. Another benefit is that testing your controllers or client code becomes easy because the testing framework need not run against the actual database access code. In this project, I have implemented the Repository Pattern for SQL Server and MongoDB. It is also possible to implement it for other databases such as MySQL and PostgreSQL. Additionally, I have implemented the Unit of Work to ensure that transactions adhere to the ACID (Atomicity, Consistency, Isolation, and Durability) properties of the database. However, the Unit of Work should be implemented separately for each type of database.
 
 ![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/e5480ec2-1360-4049-85b1-ef5d1e32c33a)
 ![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/5c5a35dd-40d5-450b-8af8-5844f598d530)
@@ -175,7 +175,7 @@ The Repository pattern is primarily considered a structural design pattern. We c
 Check Link: https://pasteboard.co/rj1wTe9r5WQh.png
 
 ### Factory Pattern
-The Factory Pattern is a creational design pattern. This Pattern is a design pattern used for creating objects. It provides an interface or abstract class for creating objects, but the actual creation is deferred to subclasses. 
+The Factory Pattern is a **creational** design pattern. This Pattern is a design pattern used for creating objects. It provides an interface or abstract class for creating objects, but the actual creation is deferred to subclasses. 
 There are different variations of the Factory Pattern => Simple Factory, Factory Method, Abstract Factory
 
 #### Simple Factory
