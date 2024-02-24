@@ -16,6 +16,7 @@ Welcome to the **Design Patterns Practice** repository! This repository serves a
   - [Prototype Pattern](#prototype-pattern)
   - [Facade Pattern](#facade-pattern)
   - [Repository Pattern](#repository-pattern)
+  - [Factory Pattern](#factory-pattern)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [License](#license)
@@ -162,6 +163,7 @@ The Facade pattern is a **structural design pattern** in software engineering th
 ### Repository Pattern
 #### (With Unit of Work)
 
+We can say that a Repository Design Pattern acts as a middleman or middle layer between the rest of the application and the data access logic. That means a repository pattern isolates all the data access code from the rest of the application. The advantage of doing so is that, if you need to do any changes then you need to do it in one place. Another benefit is that testing your controllers or client code becomes easy because the testing framework need not run against the actual database access code. In this project, I have implemented the Repository Pattern for SQL Server and MongoDB. It is also possible to implement it for other databases such as MySQL and PostgreSQL. Additionally, I have implemented the Unit of Work to ensure that transactions adhere to the ACID (Atomicity, Consistency, Isolation, and Durability) properties of the database. However, the Unit of Work should be implemented separately for each type of database.
 
 ![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/e5480ec2-1360-4049-85b1-ef5d1e32c33a)
 ![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/5c5a35dd-40d5-450b-8af8-5844f598d530)
@@ -171,6 +173,14 @@ The Facade pattern is a **structural design pattern** in software engineering th
 ![image](https://github.com/srijonchakraborty/designpattern/assets/10357119/9406d1d3-c7b8-4fef-bb87-e04a9e6bd926)
 
 Check Link: https://pasteboard.co/rj1wTe9r5WQh.png
+
+### Factory Pattern
+
+#### Simple Factory
+
+#### Factory Method
+
+#### Abstract Factory 
 
 ## Getting Started
 
