@@ -2,6 +2,9 @@
 using FactoryPattern.SimpleFactory.Contract;
 using FactoryPattern.SimpleFactory;
 using Common;
+using FactoryPattern.Contract;
+using FactoryPattern.FactoryMethodPattern.Contract;
+using FactoryPattern.FactoryMethodPattern.Implementation;
 
 namespace DesignPattern
 {
@@ -23,6 +26,38 @@ namespace DesignPattern
 
             IPayment bkashPayment = factory.CreatePayment(PaymentType.Bkash);
             bkashPayment.ProcessPayment(bkashPaymentData);
+        }
+
+        internal static void FactoryMethodPatternImplementation()
+        {
+            CreditCardPaymentData ccPaymentData = PrepareCreditcardData();
+            PayPalPaymentData paypalPaymentData = PreparePayPalData();
+            BkashPaymentData bkashPaymentData = PrepareBkashData();
+
+            //For CreditCard
+            IPaymentFactory paymentFactory = new CreditCardPaymentFactory();
+            IPayment payment = paymentFactory.CreatePayment();
+            payment.ProcessPayment(ccPaymentData);
+
+            //For PayPal
+            paymentFactory = new PayPalPaymentFactory();
+            payment = paymentFactory.CreatePayment();
+            payment.ProcessPayment(paypalPaymentData);
+
+            //For Bkash
+            paymentFactory = new BkashPaymentFactory();
+            payment = paymentFactory.CreatePayment();
+            payment.ProcessPayment(bkashPaymentData);
+
+            /**Here you can see that 
+             * paymentFactory = new BkashPaymentFactory();
+             * payment = paymentFactory.CreatePayment();
+             * payment.ProcessPayment(bkashPaymentData);
+             * These 3 lines are same for all different type of payment Where ever you need to add a new
+             * Payment type. You Just need to implement the payment type and the Create a Factory that how 
+             * the payment object will be create. Client class have no responsiblies rather than providing the 
+             * payment related information
+             **/
         }
 
         private static PayPalPaymentData PreparePayPalData()
