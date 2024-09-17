@@ -1,4 +1,6 @@
 ﻿
+using Common.Model.Burger;
+
 namespace Common.DTOs.Burger
 {
     public class ChickenBurgerDto 
@@ -10,5 +12,6 @@ namespace Common.DTOs.Burger
         public string Tomato { get; set; }
         public string ChickenPatty { get; set; }
         public string ChickenCrispy { get; set; }
+        public ChickenBurgerExtraFeature ExtraFeatures { get; set; }
     }
 }

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace PrototypePattern.Contract
 {
-    public interface IPrototype<T> where T : class
+    public interface IPrototype<TInputType,TOutputType> 
+        where TInputType : class 
+        where TOutputType : class
     {
-        T? ShallowClone(T current);
-        T? DeepClone(T current);
-        T? DeepUsingJsonClone(T current);
+        TOutputType? ShallowClone(TInputType current);
+        TOutputType? DeepClone(TInputType current);
+        TOutputType? DeepUsingJsonClone(TInputType current);
     }
 }

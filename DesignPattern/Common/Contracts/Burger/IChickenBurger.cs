@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Model.Burger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace Common.Contracts.Burger
         string Tomato { get; set; }
         string ChickenPatty { get; set; }
         string ChickenCrispy { get; set; }
+        ChickenBurgerExtraFeature ExtraFeatures { get; set; }
     }
 }

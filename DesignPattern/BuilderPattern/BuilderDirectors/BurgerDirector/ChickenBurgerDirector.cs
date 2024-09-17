@@ -28,6 +28,7 @@ namespace BuilderPattern.BuilderDirectors.BurgerDirector
                 builder.SetTomato(options.Tomato);
                 builder.SetChickenPatty(options.ChickenPatty);
                 builder.SetChickenCrispy(options.ChickenCrispy);
+                builder.SetExtraFeatures(options.ExtraFeatures);
                 order = builder
                         .SetId(options.Id)
                         .SetBurgerCode(options.BurgerCode)
