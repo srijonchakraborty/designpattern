@@ -56,8 +56,9 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
-            BuilderPatternForBurger();
+            BugerMakeBuilder.BuilderPatternForBurger();
             return;
+
             FactoryPatternImplementation.FactoryMethodPatternImplementation();
             FactoryPatternImplementation.SimpleFactoryPatternImplementation();
 
@@ -75,48 +76,6 @@ namespace DesignPattern
             Console.ReadLine();
             Console.ReadLine();
             Console.ReadLine();
-        }
-
-        private static void BuilderPatternForBurger()
-        {
-            ChickenBurgerBuilder burgerChickenBuilder = new ChickenBurgerBuilder();
-            IBurgerDirector<ChickenBurgerBuilder, ChickenBurgerDto> basicburgerDirector = new ChickenBurgerDirector();
-
-            IBurger burgerChicken = basicburgerDirector.BuildBurger(burgerChickenBuilder, new ChickenBurgerDto()
-            {
-                Id = "CB001",
-                BurgerCode = "CHCKN-01",
-                CreateDate = DateTime.Now,
-                Bun = "Sesame",
-                Tomato = "Sliced",
-                ChickenPatty = "Spicy",
-                ChickenCrispy = "Yes"
-            });
-
-            VegetableBurgerBuilder vegetableBuilder = new VegetableBurgerBuilder();
-            IBurgerDirector<VegetableBurgerBuilder, VegetableBurgerDto> basicVegetableburgerDirector = new VegetableBurgerDirector();
-
-
-            IBurger burgerVeg = basicVegetableburgerDirector.BuildBurger(vegetableBuilder, new VegetableBurgerDto()
-            {
-                Id = "VB001",
-                BurgerCode = "VEG-01",
-                CreateDate = DateTime.Now,
-                Bun = "Whole Wheat",
-                Tomato = "Sliced",
-                VegetableFriedPatty = "Spicy",
-                VegetableGrilledPatty = "Grilled"
-            });
-
-            Console.WriteLine("Chicken: ......");
-            Console.WriteLine(JsonConvert.SerializeObject(burgerChicken));
-            
-            
-            Console.WriteLine("-------------------------------");
-            Console.WriteLine("Veg: ......");
-            Console.WriteLine(JsonConvert.SerializeObject(burgerVeg));
-
-            Console.ReadKey();
         }
 
         static void RepositoryPatternInvoke(Notification finalNotification)

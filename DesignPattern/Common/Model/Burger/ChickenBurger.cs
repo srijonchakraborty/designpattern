@@ -16,5 +16,13 @@ namespace Common.Model.Burger
         public string BurgerCode { get; set; }
         public DateTime CreateDate { get; set; }
         public string Bun { get; set; }
+        public ChickenBurgerExtraFeature ExtraFeatures { get; set; }
+    }
+
+    public class ChickenBurgerExtraFeature
+    {
+        public string FeatureOne { get; set; }
+        public string FeatureTwo { get; set; }
+        public string FeatureThree { get; set; }
     }
 }

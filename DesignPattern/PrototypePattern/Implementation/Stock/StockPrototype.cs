@@ -7,7 +7,7 @@ using CMS=Common.Model.Stock;
 
 namespace PrototypePattern.Implementation.Stock
 {
-    public class StockPrototype : IPrototype<CMS.Stock>
+    public class StockPrototype : IPrototype<CMS.Stock, CMS.Stock>
     {
         public CMS.Stock? DeepClone(CMS.Stock current)
         {

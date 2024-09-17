@@ -14,7 +14,7 @@ namespace MementoPattern.Implementation.StockMemento
     public class StockOriginator : IStockOriginator
     {
         private readonly List<Stock> stocks = new List<Stock>();
-        private readonly IPrototype<Stock> tstocks = new StockPrototype();
+        private readonly IPrototype<Stock, Stock> tstocks = new StockPrototype();
         public StockOriginator()
         {
             repository = new StockRepository();//this will be injected and set here

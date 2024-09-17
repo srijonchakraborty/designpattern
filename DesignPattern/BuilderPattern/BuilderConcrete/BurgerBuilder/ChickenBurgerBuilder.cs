@@ -22,6 +22,15 @@ namespace BuilderPattern.BuilderConcrete.BurgerBuilder
             target.ChickenCrispy = chickenCrispy;
             return this;
         }
-
+        public BurgerBuilder<IChickenBurger> SetExtraFeatures(ChickenBurgerExtraFeature extraFeatures)
+        {
+            target.ExtraFeatures = new ChickenBurgerExtraFeature()
+            {
+                FeatureOne = extraFeatures.FeatureOne,
+                FeatureTwo = extraFeatures.FeatureTwo,
+                FeatureThree = extraFeatures.FeatureThree,
+            };
+            return this;
+        }
     }
 }
